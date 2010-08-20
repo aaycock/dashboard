@@ -1,0 +1,3 @@
+page.insert_html :bottom, :services, :partial => @service
+page[@service].visual_effect :highlight
+page[:new_service].reset

@@ -1,0 +1,50 @@
+<p>
+  <b>Name:</b>
+  <%=h @account.name %>
+</p>
+
+<p>
+  <b>Contact firstname:</b>
+  <%=h @account.contact_firstname %>
+</p>
+
+<p>
+  <b>Contact lastname:</b>
+  <%=h @account.contact_lastname %>
+</p>
+
+<p>
+  <b>Contact email:</b>
+  <%=h @account.contact_email %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @account.start_date %>
+</p>
+
+<p>
+  <b>Plan:</b>
+  <%=h @account.plan %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
+
+<h2>Services</h2>
+<div id="services">
+  <%= render :partial => @account.services %>
+</div>
+
+<% remote_form_for [@account, Service.new] do |f| %>
+  <p>
+    <%= f.label :name, "Name" %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description, "Description" %><br/>
+    <%= f.text_area :description %>
+  </p>
+  <p><%= f.submit "Add Service" %></p>
+<% end %>

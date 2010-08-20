@@ -1,0 +1,99 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+
+
+Processing AccountsController#create (for 0.0.0.0 at 2010-08-19 11:14:32) [POST]
+  Parameters: {"account"=>{}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 1) | 401 Unauthorized [http://test.host/accounts?]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 980190962) [0m
+
+
+Processing AccountsController#destroy (for 0.0.0.0 at 2010-08-19 11:14:32) [DELETE]
+  Parameters: {"id"=>"980190962"}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 1) | 401 Unauthorized [http://test.host/accounts/980190962]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "accounts" [0m
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 980190962) [0m
+
+
+Processing AccountsController#edit (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+  Parameters: {"id"=>"980190962"}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 1) | 401 Unauthorized [http://test.host/accounts/980190962/edit]
+
+
+Processing AccountsController#index (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+  [4;36;1mAccount Load (0.5ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/accounts
+Rendering accounts/index
+Completed in 15ms (View: 12, DB: 0) | 200 OK [http://test.host/accounts]
+
+
+Processing AccountsController#new (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/accounts/new]
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 980190962) [0m
+
+
+Processing AccountsController#show (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 980190962) [0m
+Rendering template within layouts/accounts
+Rendering accounts/show
+  [4;35;1mService Load (0.2ms)[0m   [0mSELECT * FROM "services" WHERE ("services".account_id = 980190962) [0m
+Completed in 11ms (View: 9, DB: 1) | 200 OK [http://test.host/accounts/980190962]
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 980190962) [0m
+
+
+Processing AccountsController#update (for 0.0.0.0 at 2010-08-19 11:14:32) [PUT]
+  Parameters: {"account"=>{}, "id"=>"980190962"}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/accounts/980190962?]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "services" [0m
+
+
+Processing ServicesController#create (for 0.0.0.0 at 2010-08-19 11:14:32) [POST]
+  Parameters: {"service"=>{}}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "services" [0m
+  [4;35;1mService Load (0.2ms)[0m   [0mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+
+
+Processing ServicesController#destroy (for 0.0.0.0 at 2010-08-19 11:14:32) [DELETE]
+  Parameters: {"id"=>"980190962"}
+  [4;36;1mService Load (0.3ms)[0m   [0;1mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+  [4;35;1mService Destroy (0.3ms)[0m   [0mDELETE FROM "services" WHERE "id" = 980190962[0m
+  [4;36;1mService Load (0.3ms)[0m   [0;1mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+
+
+Processing ServicesController#edit (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;35;1mService Load (0.3ms)[0m   [0mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+Rendering template within layouts/services
+Rendering services/edit
+
+
+Processing ServicesController#index (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+  [4;36;1mService Load (0.5ms)[0m   [0;1mSELECT * FROM "services" [0m
+Rendering template within layouts/services
+Rendering services/index
+
+
+Processing ServicesController#new (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+Rendering template within layouts/services
+Rendering services/new
+  [4;35;1mService Load (0.3ms)[0m   [0mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+
+
+Processing ServicesController#show (for 0.0.0.0 at 2010-08-19 11:14:32) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;36;1mService Load (0.3ms)[0m   [0;1mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+Rendering template within layouts/services
+Rendering services/show
+  [4;35;1mService Load (0.3ms)[0m   [0mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
+
+
+Processing ServicesController#update (for 0.0.0.0 at 2010-08-19 11:14:32) [PUT]
+  Parameters: {"service"=>{}, "id"=>"980190962"}
+  [4;36;1mService Load (0.3ms)[0m   [0;1mSELECT * FROM "services" WHERE ("services"."id" = 980190962) [0m
