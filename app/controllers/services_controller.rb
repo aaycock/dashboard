@@ -2,7 +2,11 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.xml
   def index
-    @services = Service.all
+    #user_id = session[:user_id]
+    #user = User.find(user_id)
+    #account_id = Account.find(user.account_id)
+    @services = Service.find_all_by_account_id(1)
+    # TODO Link users to account and filter by account ID
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,10 +44,11 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.xml
   def create
-   @account = Account.find(params[:account_id])
+    #logger.debug "account_id: #{params[:account_id]}"
+   @account = Account.find(1) # TODO Replace with real account_id from session
    @service = @account.services.create!(params[:service])
    respond_to do |format|
-     format.html { redirect_to @account}
+     format.html { redirect_to("/services", :notice => 'Service was successfully created.')}
      format.js
    end
   end
@@ -55,7 +60,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
-        format.html { redirect_to(@service, :notice => 'Service was successfully updated.') }
+        format.html { redirect_to("/services", :notice => 'Service was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -71,7 +76,7 @@ class ServicesController < ApplicationController
     @service.destroy
 
     respond_to do |format|
-      format.html { redirect_to(services_url) }
+      format.html { redirect_to("/services") }
       format.xml  { head :ok }
     end
   end

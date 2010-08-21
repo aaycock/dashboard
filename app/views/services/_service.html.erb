@@ -2,5 +2,6 @@
 <p>
   <strong>Name: <%= service.name %> </strong><br/>
   <%= service.description %>
+  <%= link_to "Destroy", service, :confirm => "Are you sure?", :method => :delete  %>
 </p>
 <% end %>

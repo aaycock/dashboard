@@ -1,0 +1,452 @@
+<% @page_name = 'Home' %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>StatusDashboard - Home</title>
+    <meta name="description" content="Administry - Admin Template by Zoran Juric" />
+    <meta name="keywords" content="Admin,Template" />
+
+    <%= render :partial => "/common/includes" %>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        /* setup navigation, content boxes, etc... */
+        Administry.setup();
+
+        /* progress bar animations - setting initial values */
+        Administry.progress("#progress1", 1, 5);
+        Administry.progress("#progress2", 2, 5);
+        Administry.progress("#progress3", 2, 5);
+
+        /* flot graphs */
+        var sales = [{
+            label: 'Total Paid',
+            data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,900],[8,0],[9,0],[10,0],[11,0],[12,0]]
+          },{
+            label: 'Total Due',
+            data: [[1, 0],[2,0],[3,0],[4,0],[5,0],[6,422.10],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0]]
+          }
+        ];
+
+        var plot = $.plot($("#placeholder"), sales, {
+          bars: { show: true, lineWidth: 1 },
+          legend: { position: "nw" },
+          xaxis: { ticks: [[1, "Jan"], [2, "Feb"], [3, "Mar"], [4, "Apr"], [5, "May"], [6, "Jun"], [7, "Jul"], [8, "Aug"], [9, "Sep"], [10, "Oct"], [11, "Nov"], [12, "Dec"]] },
+          yaxis: { min: 0, max: 1000 },
+          grid: { color: "#666" },
+          colors: ["#0a0", "#f00"]
+        });
+
+
+      });
+    </script>
+    <!-- 2. Add the JavaScript to initialize the chart on document ready -->
+    <script type="text/javascript">
+
+      var chart;
+      $(document).ready(function() {
+        chart = new Highcharts.Chart({
+          chart: {
+            renderTo: 'container',
+            margin: [0, 200, 30, 15]
+          },
+          title: {
+            text: ''
+          },
+          plotArea: {
+            shadow: null,
+            borderWidth: null,
+            backgroundColor: null
+          },
+          tooltip: {
+            formatter: function() {
+              return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+            }
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                enabled: false,
+                formatter: function() {
+                  if (this.y > 5) return this.point.name;
+                },
+                color: 'white',
+                style: {
+                  font: '8px Trebuchet MS, Verdana, sans-serif'
+                }
+              }
+            }
+          },
+          legend: {
+            layout: 'vertical',
+            style: {
+              left: 'auto',
+              bottom: 'auto',
+              right: '30px',
+              top: '35px'
+            }
+          },
+          series: [{
+              type: 'pie',
+              name: 'Browser share',
+              data: [
+                ['Retail',   45.0],
+                ['Logistics',       26.8],
+                {
+                  name: 'Manufacturing',
+                  y: 12.8,
+                  sliced: true,
+                  selected: true
+                },
+                ['Life Sciences',    8.5],
+                ['Financial Svcs',     6.2],
+                ['Communication',   0.7]
+              ]
+            }]
+        });
+
+        /* flot graphs */
+        var d1 = [];
+        for (var i = 0; i < 14; i += 0.5)
+          d1.push([i, Math.sin(i)]);
+
+        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+
+        var d3 = [];
+        for (var i = 0; i < 14; i += 0.5)
+          d3.push([i, Math.cos(i)]);
+
+        var d4 = [];
+        for (var i = 0; i < 14; i += 0.1)
+          d4.push([i, Math.sqrt(i * 10)]);
+
+        var d5 = [];
+        for (var i = 0; i < 14; i += 0.5)
+          d5.push([i, Math.sqrt(i)]);
+
+        var d6 = [];
+        for (var i = 0; i < 14; i += 0.5 + Math.random())
+          d6.push([i, Math.sqrt(2*i + Math.sin(i) + 5)]);
+
+
+
+        var fh_data = [
+          {
+            label: 'Sent',
+            data: [[1267873200 * 1000, 2],[1267959600 * 1000, 2],[1268046000 * 1000, 2],[1268132400 * 1000, 3],[1268218800 * 1000, 3],[1268305200 * 1000, 3],[1268391600 * 1000, 3],[1268478000 * 1000, 5],[1268564400 * 1000, 7],[1268650800 * 1000, 4],[1268737200 * 1000, 7],[1268823600 * 1000, 7],[1268910000 * 1000, 12],[1268996400 * 1000, 14],[1269082800 * 1000, 16],[1269169200 * 1000, 18],[1269255600 * 1000, 14],[1269342000 * 1000, 15],[1269428400 * 1000, 17],[1269514800 * 1000, 18],[1269601200 * 1000, 20],[1269687600 * 1000, 16],[1269774000 * 1000, 14],[1269856800 * 1000, 17],[1269943200 * 1000, 19],[1270029600 * 1000, 15],[1270116000 * 1000, 16],[1270202400 * 1000, 13],[1270288800 * 1000, 16],[1270375200 * 1000, 19],[1270461600 * 1000, 13],[1270548000 * 1000, 14],[1270634400 * 1000, 15]]
+          },
+          {
+            label: 'Viewed',
+            data: [[1267873200 * 1000, -3],[1267959600 * 1000, -3],[1268046000 * 1000, -2],[1268132400 * 1000, -2],[1268218800 * 1000, 0],[1268305200 * 1000, 0],[1268391600 * 1000, -2],[1268478000 * 1000, 0],[1268564400 * 1000, 2],[1268650800 * 1000, 0],[1268737200 * 1000, -1],[1268823600 * 1000, 2],[1268910000 * 1000, 4],[1268996400 * 1000, 6],[1269082800 * 1000, 9],[1269169200 * 1000, 11],[1269255600 * 1000, 9],[1269342000 * 1000, 9],[1269428400 * 1000, 8],[1269514800 * 1000, 10],[1269601200 * 1000, 11],[1269687600 * 1000, 7],[1269774000 * 1000, 6],[1269856800 * 1000, 9],[1269943200 * 1000, 11],[1270029600 * 1000, 7],[1270116000 * 1000, 7],[1270202400 * 1000, 5],[1270288800 * 1000, 6],[1270375200 * 1000, 9],[1270461600 * 1000, 8],[1270548000 * 1000, 5],[1270634400 * 1000, 7]]
+          }
+        ];
+        function weekendAreas(plotarea) {
+          var areas = [];
+          var d = new Date(plotarea.xmin);
+          // go to the first Saturday
+          d.setDate(d.getDate() - ((d.getDay() + 1) % 7))
+          d.setSeconds(0);
+          d.setMinutes(0);
+          d.setHours(0);
+          var i = d.getTime();
+          do {
+            areas.push({ x1: i, x2: i + 2 * 24 * 60 * 60 * 1000 });
+            i += 7 * 24 * 60 * 60 * 1000;
+          } while (i < plotarea.xmax);
+
+          return areas;
+        }
+        function showTooltip(x, y, contents) {
+          $('<div id="hovertip">' + contents + '</div>').css( {
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 15,
+            border: '2px solid #666',
+            padding: '4px',
+            'background-color': '#fff',
+            opacity: 0.9,
+            color: '#666',
+            fontSize: '13px'
+          }).appendTo("body").fadeIn('fast');
+        }
+
+        var options = {
+          lines: { show: true, lineWidth: 3 },
+          points: { show: true },
+          legend: { noColumns: 2, position: "se"/*, container: '#flot-legend'*/ },
+          yaxis: { min: -25, max: 25 },
+          xaxis: { mode: "time", timeformat: "%d %b", monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] },
+          selection: { mode: "x" },
+          grid: { color: "#666", coloredAreas: weekendAreas, hoverable: true },
+          colors: ["#E92424", "#75C5F0"]
+        };
+
+        var plot = $.plot($("#flotPlaceholder"), fh_data, options);
+
+        $("#flotPlaceholder").bind("selected", function (event, area) {
+          plot = $.plot($("#flotPlaceholder"), fh_data,
+          $.extend(true, {}, options, {
+            xaxis: { min: area.x1, max: area.x2 }
+          }));
+          $('#clearSelection').show();
+        });
+        var previousPoint = null;
+        $("#flotPlaceholder").bind("plothover", function (event, pos, item) {
+          if (item) {
+            if (previousPoint != item.datapoint) {
+              previousPoint = item.datapoint;
+
+              $("#hovertip").remove();
+              var y = item.datapoint[1];
+
+              showTooltip(item.pageX, item.pageY, y + '°C');
+            }
+          }
+          else {
+            $("#hovertip").remove();
+            previousPoint = null;
+          }
+        });
+        $("#clearSelection").click(function () {
+          $.plot($("#flotPlaceholder"), fh_data, options);
+          $('#clearSelection').hide();
+        });
+
+      });
+
+    </script>
+
+  </head>
+  <body>
+
+    <%= render :partial => "/common/header" %>
+
+    <!-- Page title -->
+    <div id="pagetitle">
+      <div class="wrapper">
+
+        <h1>Dashboard</h1>
+        <!-- Quick search box -->
+        <form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+      </div>
+    </div>
+    <!-- End of Page title -->
+
+    <!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        
+        <!-- Left column/section -->
+        <section class="column width6 first">
+
+<% if flash[:notice] -%>
+          
+         <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+          
+        <% end %>
+
+          <div class="colgroup leading">
+            <div class="column width3 first">
+              <h4>System Metrics</h4>
+              <hr/>
+
+              <div id="container" style="width: 360px; height: 200px; margin: 0 auto"></div>
+
+              <table class="no-style full">
+                <tbody>
+                  <tr>
+                    <td>Total Customers</td>
+                    <td class="ta-right"><a href="#"><B>132</B></a></td>
+                    <td class="ta-right"></td>
+                  </tr>
+                  <tr>
+                    <td>Usable References</td>
+                    <td class="ta-right"><a href="#"><B>23</B> (7%)</a></td>
+                    <td class="ta-right"></td>
+                  </tr>
+                  <tr>
+                    <td>Items in Library</td>
+                    <td class="ta-right"><a href="#"><B>145</B></a></td>
+                    <td class="ta-right"></td>
+                  </tr>
+                  <tr>
+                    <td>Leads Generated</td>
+                    <td class="ta-right"><a href="#"><B>5</B></a></td>
+                    <td class="ta-right"></td>
+                  </tr>
+                  <tr>
+                    <td>Revenue Generated</td>
+                    <td class="ta-right"><a href="#"><B>$678,000</B></a></td>
+                    <td class="ta-right"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column width3">
+              <h4>Lead Activity</h4>
+              <hr/>
+              <table class="no-style full">
+                <tbody>
+                  <tr>
+                    <td><B>Company</B></td>
+                    <td ><B>Contact</B></td>
+                    <td class="ta-center"><B>Days Pending</B></td>
+                  </tr>
+                  <tr>
+                    <td>Bank of America</td>
+                    <td>Dagney Taggard</td>
+                    <td class="ta-center">1</td>
+                  </tr>
+                  <tr>
+                    <td>Wal-Mart</td>
+                    <td>Simon Lowenstein</td>
+                    <td class="ta-center">2</td>
+                  </tr>
+                  <tr>
+                    <td>Ford Motor</td>
+                    <td>Susan Patterson</td>
+                    <td class="ta-center">3</td>
+                  </tr>
+
+                  <tr>
+                    <td>Starbucks</td>
+                    <td>John Galt</td>
+                    <td class="ta-center">4</td>
+                  </tr>
+                  <tr>
+                    <td>UPS</td>
+                    <td>Ken Holder</td>
+                    <td class="ta-center">7</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>Campaign Activity</h4>
+              <hr/>
+              <table class="no-style full">
+                <tbody>
+                  <tr>
+                    <td><B>Name</B></td>
+                    <td class="ta-center"><B>Click Through/Conversion</B></td>
+                    <td class="ta-center"><B>Pipeline</B></td>
+                  </tr>
+                  <tr>
+                    <td><img width="16" height="16" alt="" src="img/bullet_green.png"><a href="#">Fortune 500</a></td>
+                    <td class="ta-center">5% / 3%</td>
+                    <td class="ta-center">$210,000</td>
+                  </tr>
+                  <tr>
+                    <td><img width="16" height="16" alt="" src="img/bullet_orange.png"><a href="#">High Tech</a></td>
+                    <td class="ta-center">3% / 2%</td>
+                    <td class="ta-center">$210,000</td>
+                  </tr>
+                  <tr>
+                    <td><img width="16" height="16" alt="" src="img/bullet_red.png"><a href="#">Education</a></td>
+                    <td class="ta-center">2% / 1%</td>
+                    <td class="ta-center">$210,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="colgroup leading">
+            <div class="column width6">
+              <h4>Reference Activity</h4>
+              <hr/>
+
+              <p>TIP: Select an area of the graph to zoom in</p>
+              <div id="flotPlaceholder" style="height:200px;"></div>
+              <input id="clearSelection" type="button" class="btn" value="Zoom out" style="display:none"/>
+              <p>&nbsp;</p>
+            </div>
+          </div>
+
+          <div class="colgroup leading">
+            <div class="column width3 first">
+              <h4>Client Stats</h4>
+              <hr/>
+              <table class="no-style full">
+                <tbody>
+                  <tr>
+                    <td>Active</td>
+                    <td class="ta-right">1/5</td>
+                    <td><div id="progress1" class="progress full progress-green"><span><b></b></span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Pending</td>
+                    <td class="ta-right">2/5</td>
+                    <td><div id="progress2" class="progress full progress-blue"><span><b></b></span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Suspended</td>
+                    <td class="ta-right">2/5</td>
+                    <td><div id="progress3" class="progress full progress-red"><span><b></b></span></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="column width3">
+              <h4>Reports</h4>
+              <hr/>
+              <p><b>Sales this year</b></p>
+              <div id="placeholder" style="height:100px"></div>
+            </div>
+          </div>
+          <div class="clear">&nbsp;</div>
+
+        </section>
+        <!-- End of Left column/section -->
+
+        <!-- Right column/section -->
+        <aside class="column width2">
+          <div id="rightmenu">
+            <header>
+              <h3>Your Account</h3>
+            </header>
+            <dl class="first">
+              <dt><img width="16" height="16" alt="" src="img/key.png"></dt>
+              <dd><a href="#">Administry (admin)</a></dd>
+              <dd class="last">Free Account.</dd>
+
+              <dt><img width="16" height="16" alt="" src="img/help.png"></dt>
+              <dd><a href="#">Support</a></dd>
+              <dd class="last">Documentation and FAQ</dd>
+            </dl>
+          </div>
+          <div class="content-box">
+            <header>
+              <h3>Latest in the Community</h3>
+            </header>
+            <section>
+              <dl>
+                <dt>Maximize every interaction with a client</dt>
+                <dd><a href="#">Read more</a></dd>
+                <dt>Diversification for Small Business Owners</dt>
+                <dd><a href="#">Read more</a></dd>
+              </dl>
+            </section>
+          </div>
+        </aside>
+        <!-- End of Right column/section -->
+
+      </div>
+      <!-- End of Wrapper -->
+    </div>
+    <!-- End of Page content -->
+
+    <%= render :partial => "/common/footer" %>
+
+    <!-- Scroll to top link -->
+    <a href="#" id="totop">^ scroll to top</a>
+
+    <!-- Admin template javascript load -->
+    <script type="text/javascript" src="js/administry.js"></script>
+  </body>
+</html>
