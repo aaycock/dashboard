@@ -3,7 +3,7 @@
   <div class="wrapper">
     <h1>User &rarr; <span>List</span></h1>
     <!-- Quick search box -->
-    <form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+    <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
   </div>
 </div>
 <!-- End of Page title -->
@@ -15,67 +15,47 @@
     <!-- Left column/section -->
     <section class="column width6 first">
 
-            <h3>Users</h3>
+      <h3>Users</h3>
 
-            <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
-              <thead>
-                <tr>
-                  <th>First name</th>
-                  <th>Last name</th>
-                  <th>Email</th>
-                  <th colspan="3">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @users.each do |user| %>
-                  <tr>
-                    <td><%=h user.first_name %></td>
-                    <td><%=h user.last_name %></td>
-                    <td><%=h user.email %></td>
-                    <td><%= link_to 'Show', user %></td>
-                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
+      <% if flash[:notice] -%>
 
- <%= link_to 'New user', new_user_path %>
+        <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+        <% flash[:notice] = nil %>
 
-          </section>
-          <!-- End of Left column/section -->
+      <% end %>
+    
 
-          <!-- Right column/section -->
-          <aside class="column width2">
-            <div id="rightmenu">
-              <header>
-                <h3>You might also want to check out...</h3>
-              </header>
-              <dl class="first">
-                <dt><img width="16" height="16" alt="Basic styles" src="/img/style.png"></dt>
-                <dd><a href="styles.html">Basic styles</a></dd>
-                <dd class="last">Basic elements and styles</dd>
+      <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th colspan="3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%=h user.first_name %></td>
+              <td><%=h user.last_name %></td>
+              <td><%=h user.email %></td>
+              <td><%= link_to 'Show', user %></td>
+              <td><%= link_to 'Edit', edit_user_path(user) %></td>
+              <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-                <dt><img width="16" height="16" alt="Form validation" src="/img/book.png"></dt>
-                <dd><a href="http://docs.jquery.com/Plugins/Validation">Form validation</a></dd>
-                <dd class="last">jQuery form validation documentation</dd>
-              </dl>
-            </div>
-            <div class="content-box">
-              <header>
-                <h3>Quick info</h3>
-              </header>
-              <section>
-                <q>A form is an area that can contain form elements.
-                  Form elements are elements that allow the user to enter information (like text fields, textarea fields, drop-down menus, radio buttons, checkboxes, etc.) in a form.
-                  A form is defined with the &lt;form&gt; tag.
-                  <cite>w3schools.com</cite></q>
-              </section>
-            </div>
-          </aside>
-          <!-- End of Right column/section -->
+      <%= link_to 'New user', new_user_path %>
 
-        </div>
-        <!-- End of Wrapper -->
-      </div>
-      <!-- End of Page content -->
+    </section>
+    <!-- End of Left column/section -->
+
+    <%= render :partial => "/common/right_column"  %>
+
+  </div>
+  <!-- End of Wrapper -->
+</div>
+<!-- End of Page content -->

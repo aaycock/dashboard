@@ -227,226 +227,127 @@
     <%= render :partial => "/common/header" %>
 
     <!-- Page title -->
-    <div id="pagetitle">
-      <div class="wrapper">
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>Service &rarr; <span>List</span></h1>
+    <!-- Quick search box -->
+    <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+  </div>
+</div>
+<!-- End of Page title -->
 
-        <h1>Dashboard</h1>
-        <!-- Quick search box -->
-        <form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
-      </div>
-    </div>
-    <!-- End of Page title -->
+<!-- Page content -->
+<div id="page">
+  <!-- Wrapper -->
+  <div class="wrapper">
+    <!-- Left column/section -->
+    <section class="column width6 first">
 
-    <!-- Page content -->
-    <div id="page">
-      <!-- Wrapper -->
-      <div class="wrapper">
-        
-        <!-- Left column/section -->
-        <section class="column width6 first">
+            <h3>What your customers see:</h3>
 
-<% if flash[:notice] -%>
-          
+            <% if flash[:notice] -%>
+
          <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
-          
+
         <% end %>
 
-          <div class="colgroup leading">
-            <div class="column width3 first">
-              <h4>System Metrics</h4>
-              <hr/>
-
-              <div id="container" style="width: 360px; height: 200px; margin: 0 auto"></div>
-
-              <table class="no-style full">
-                <tbody>
-                  <tr>
-                    <td>Total Customers</td>
-                    <td class="ta-right"><a href="#"><B>132</B></a></td>
-                    <td class="ta-right"></td>
+            <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>8/22/2010</th>
+           <th>8/21/2010</th>
+           <th>8/20/2010</th>
+           <th>8/19/2010</th>
+           <th>8/18/2010</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr>
+                    <td >Service 1</td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
                   </tr>
-                  <tr>
-                    <td>Usable References</td>
-                    <td class="ta-right"><a href="#"><B>23</B> (7%)</a></td>
-                    <td class="ta-right"></td>
+                   <tr>
+                    <td >Service 2</td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
                   </tr>
-                  <tr>
-                    <td>Items in Library</td>
-                    <td class="ta-right"><a href="#"><B>145</B></a></td>
-                    <td class="ta-right"></td>
+                   <tr>
+                    <td >Service 3</td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/no.png" alt="" /></td>
                   </tr>
-                  <tr>
-                    <td>Leads Generated</td>
-                    <td class="ta-right"><a href="#"><B>5</B></a></td>
-                    <td class="ta-right"></td>
+                   <tr>
+                    <td >Service 4</td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
                   </tr>
-                  <tr>
-                    <td>Revenue Generated</td>
-                    <td class="ta-right"><a href="#"><B>$678,000</B></a></td>
-                    <td class="ta-right"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="column width3">
-              <h4>Lead Activity</h4>
-              <hr/>
-              <table class="no-style full">
-                <tbody>
-                  <tr>
-                    <td><B>Company</B></td>
-                    <td ><B>Contact</B></td>
-                    <td class="ta-center"><B>Days Pending</B></td>
-                  </tr>
-                  <tr>
-                    <td>Bank of America</td>
-                    <td>Dagney Taggard</td>
-                    <td class="ta-center">1</td>
-                  </tr>
-                  <tr>
-                    <td>Wal-Mart</td>
-                    <td>Simon Lowenstein</td>
-                    <td class="ta-center">2</td>
-                  </tr>
-                  <tr>
-                    <td>Ford Motor</td>
-                    <td>Susan Patterson</td>
-                    <td class="ta-center">3</td>
+                   <tr>
+                    <td >Service 5</td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/no.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
                   </tr>
 
-                  <tr>
-                    <td>Starbucks</td>
-                    <td>John Galt</td>
-                    <td class="ta-center">4</td>
-                  </tr>
-                  <tr>
-                    <td>UPS</td>
-                    <td>Ken Holder</td>
-                    <td class="ta-center">7</td>
-                  </tr>
-                </tbody>
-              </table>
 
-              <h4>Campaign Activity</h4>
-              <hr/>
-              <table class="no-style full">
-                <tbody>
-                  <tr>
-                    <td><B>Name</B></td>
-                    <td class="ta-center"><B>Click Through/Conversion</B></td>
-                    <td class="ta-center"><B>Pipeline</B></td>
-                  </tr>
-                  <tr>
-                    <td><img width="16" height="16" alt="" src="img/bullet_green.png"><a href="#">Fortune 500</a></td>
-                    <td class="ta-center">5% / 3%</td>
-                    <td class="ta-center">$210,000</td>
-                  </tr>
-                  <tr>
-                    <td><img width="16" height="16" alt="" src="img/bullet_orange.png"><a href="#">High Tech</a></td>
-                    <td class="ta-center">3% / 2%</td>
-                    <td class="ta-center">$210,000</td>
-                  </tr>
-                  <tr>
-                    <td><img width="16" height="16" alt="" src="img/bullet_red.png"><a href="#">Education</a></td>
-                    <td class="ta-center">2% / 1%</td>
-                    <td class="ta-center">$210,000</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        </tbody>
+      </table>
 
-          <div class="colgroup leading">
-            <div class="column width6">
-              <h4>Reference Activity</h4>
-              <hr/>
 
-              <p>TIP: Select an area of the graph to zoom in</p>
-              <div id="flotPlaceholder" style="height:200px;"></div>
-              <input id="clearSelection" type="button" class="btn" value="Zoom out" style="display:none"/>
-              <p>&nbsp;</p>
-            </div>
-          </div>
 
-          <div class="colgroup leading">
-            <div class="column width3 first">
-              <h4>Client Stats</h4>
-              <hr/>
-              <table class="no-style full">
-                <tbody>
-                  <tr>
-                    <td>Active</td>
-                    <td class="ta-right">1/5</td>
-                    <td><div id="progress1" class="progress full progress-green"><span><b></b></span></div></td>
-                  </tr>
-                  <tr>
-                    <td>Pending</td>
-                    <td class="ta-right">2/5</td>
-                    <td><div id="progress2" class="progress full progress-blue"><span><b></b></span></div></td>
-                  </tr>
-                  <tr>
-                    <td>Suspended</td>
-                    <td class="ta-right">2/5</td>
-                    <td><div id="progress3" class="progress full progress-red"><span><b></b></span></div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="column width3">
-              <h4>Reports</h4>
-              <hr/>
-              <p><b>Sales this year</b></p>
-              <div id="placeholder" style="height:100px"></div>
-            </div>
-          </div>
-          <div class="clear">&nbsp;</div>
+          </section>
+          <!-- End of Left column/section -->
 
-        </section>
-        <!-- End of Left column/section -->
+         <%= render :partial => "/common/right_column"  %>
 
-        <!-- Right column/section -->
-        <aside class="column width2">
-          <div id="rightmenu">
-            <header>
-              <h3>Your Account</h3>
-            </header>
-            <dl class="first">
-              <dt><img width="16" height="16" alt="" src="img/key.png"></dt>
-              <dd><a href="#">Administry (admin)</a></dd>
-              <dd class="last">Free Account.</dd>
-
-              <dt><img width="16" height="16" alt="" src="img/help.png"></dt>
-              <dd><a href="#">Support</a></dd>
-              <dd class="last">Documentation and FAQ</dd>
-            </dl>
-          </div>
-          <div class="content-box">
-            <header>
-              <h3>Latest in the Community</h3>
-            </header>
-            <section>
-              <dl>
-                <dt>Maximize every interaction with a client</dt>
-                <dd><a href="#">Read more</a></dd>
-                <dt>Diversification for Small Business Owners</dt>
-                <dd><a href="#">Read more</a></dd>
-              </dl>
-            </section>
-          </div>
-        </aside>
-        <!-- End of Right column/section -->
-
+        </div>
+        <!-- End of Wrapper -->
       </div>
-      <!-- End of Wrapper -->
-    </div>
-    <!-- End of Page content -->
+      <!-- End of Page content -->
 
-    <%= render :partial => "/common/footer" %>
+     <%= render :partial => "/common/footer"  %>
 
-    <!-- Scroll to top link -->
-    <a href="#" id="totop">^ scroll to top</a>
 
-    <!-- Admin template javascript load -->
-    <script type="text/javascript" src="js/administry.js"></script>
   </body>
-</html>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

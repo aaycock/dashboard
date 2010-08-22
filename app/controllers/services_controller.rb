@@ -2,10 +2,10 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.xml
   def index
-    #user_id = session[:user_id]
-    #user = User.find(user_id)
-    #account_id = Account.find(user.account_id)
-    @services = Service.find_all_by_account_id(1)
+    user_id = session[:user_id]
+    user = User.find(user_id)
+    account_id = Account.find(user.account_id)
+    @services = Service.find_all_by_account_id(account_id)
     # TODO Link users to account and filter by account ID
 
     respond_to do |format|
