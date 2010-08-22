@@ -9,16 +9,14 @@
 				Logged in as <b><%= session[:user_first_name] %> <%= session[:user_last_name] %> </b>
       <span>|</span> <a href="/admin/my_account">Settings</a>
       <span>|</span> <a href="/admin/logout">Logout</a><br />
-      <small>You have <a href="#" class="high"><b>1</b> new message!</a></small>
+      <!-- <small>You have <a href="#" class="high"><b>1</b> new message!</a></small> TODO add message support -->
     </div>
     <!-- End of Top navigation -->
     <!-- Main navigation -->
     <nav id="menu">
       <ul class="sf-menu">
         <li <% if @page_name=="Home" %>class="current"<% end %>><a href="/admin">Dashboard</a></li>
-        <li <% if @page_name=="Services" %>class="current"<% end %>>
-          <a href="/services">Services</a>
-        </li>
+        
         <li <% if @page_name=="Admin" %>class="current"<% end %>><a href="/admin/">Admin</a>
           <ul>
             <li>

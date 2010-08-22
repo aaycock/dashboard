@@ -11,6 +11,7 @@ class AdminController < ApplicationController
       user = User.authenticate(params[:email], params[:password])
       if user
         session[:user_id] = user.id
+        session[:account_id] = user.account_id
         session[:user_first_name] = user.first_name
         session[:user_last_name] = user.last_name
         uri = session[:original_uri]

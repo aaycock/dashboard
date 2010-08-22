@@ -7,7 +7,7 @@
     <!-- End of Meta -->
 
     <!-- Page title -->
-    <title><fmt:message key="common.label.title" /></title>
+    <title>Your Account Settings</title>
     <!-- End of Page title -->
 
     <%= render :partial => "/common/includes"  %>
@@ -26,9 +26,9 @@
     <!-- Page title -->
     <div id="pagetitle">
       <div class="wrapper">
-        <h1>Account &rarr; <span>Edit</span></h1>
+        <h1>Your Account</h1>
         <!-- Quick search box -->
-        <form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+       <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
       </div>
     </div>
     <!-- End of Page title -->
@@ -73,35 +73,7 @@
     </section>
     <!-- End of Left column/section -->
 
-    <!-- Right column/section -->
-    <aside class="column width2">
-      <div id="rightmenu">
-        <header>
-          <h3>You might also want to check out...</h3>
-        </header>
-        <dl class="first">
-          <dt><img width="16" height="16" alt="Basic styles" src="/realtimeref/img/style.png"></dt>
-          <dd><a href="styles.html">Basic styles</a></dd>
-          <dd class="last">Basic elements and styles</dd>
-
-          <dt><img width="16" height="16" alt="Form validation" src="/realtimeref/img/book.png"></dt>
-          <dd><a href="http://docs.jquery.com/Plugins/Validation">Form validation</a></dd>
-          <dd class="last">jQuery form validation documentation</dd>
-        </dl>
-      </div>
-      <div class="content-box">
-        <header>
-          <h3>Quick info</h3>
-        </header>
-        <section>
-          <q>A form is an area that can contain form elements.
-                                                          Form elements are elements that allow the user to enter information (like text fields, textarea fields, drop-down menus, radio buttons, checkboxes, etc.) in a form.
-                                                          A form is defined with the &lt;form&gt; tag.
-            <cite>w3schools.com</cite></q>
-        </section>
-      </div>
-    </aside>
-    <!-- End of Right column/section -->
+    <%= render :partial => "/common/right_column"  %>
 
   </div>
   <!-- End of Wrapper -->

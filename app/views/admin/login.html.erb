@@ -53,7 +53,7 @@
         <h3>Login</h3>
 
 
-        <div class="box box-info">Type anything to log in</div>
+        <div class="box box-info">Login below and we'll send you right along.</div>
         <% if flash[:notice] -%>
           <div class="box box-error"><%= flash[:notice] %></div>
         <% end %>
@@ -68,13 +68,13 @@
             <%= password_field_tag :password, params[:password], :class => "full" %>
           </p>
 
-          <p>
+          <!-- <p>
             <input type="checkbox" id="remember" class="" value="1" name="remember"/>
             <label class="choice" for="remember">Remember me?</label>
-          </p>
+          </p> TODO add remember me logic to login -->
 
           <p>
-            <%= submit_tag "Login", :class => "btn btn-green big" %> &nbsp; <a href="javascript: //;" onclick="$('#emailform').slideDown(); return false;">Forgot password?</a> or <a href="#">Need help?</a>
+            <%= submit_tag "Login", :class => "btn btn-green big" %> &nbsp; <a href="javascript: //;" onclick="$('#emailform').slideDown(); return false;">Forgot password?</a>
           </p>
           <div class="clear">&nbsp;</div>
 

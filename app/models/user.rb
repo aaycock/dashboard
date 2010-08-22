@@ -2,6 +2,8 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
 
+  belongs_to :account
+
   validates_presence_of :email
   validates_uniqueness_of :email
 
