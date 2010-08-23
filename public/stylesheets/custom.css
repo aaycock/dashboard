@@ -7,3 +7,9 @@ update the template. Simply copy an existing style from style.css to
 this file, and modify it to your liking. 
 
 */
+#page a.img { text-decoration: none; }
+#page a.img { border: 0; }
+#page a.img:hover, a.img:focus, a.img:active {
+    background-color:#FFFFFF;
+     text-decoration:none;
+}

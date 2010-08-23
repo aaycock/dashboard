@@ -21,17 +21,6 @@
   </head>
   <body>
 
-    <%= render :partial => "/common/header" %>
-
-    <!-- Page title -->
-    <div id="pagetitle">
-      <div class="wrapper">
-        <h1>Service &rarr; <span>List</span></h1>
-        <!-- Quick search box -->
-        <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
-      </div>
-    </div>
-    <!-- End of Page title -->
 
     <!-- Page content -->
     <div id="page">
@@ -40,47 +29,44 @@
         <!-- Left column/section -->
         <section class="column width6 first">
 
-          <p>
-            <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
-          </p>
 
-          <h3>What your customers see:</h3>
+          <h3>TRX Internal Dashboard</h3>
 
           <% if flash[:notice] -%>
 
             <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
 
           <% end %>
-<div id="table">
-          <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <% @days.each do |day| %>
-                  <th><%= day.strftime('%m/%d/%Y') %></th>
-                <% end %>
-              </tr>
-            </thead>
-            <tbody>
-              <% @services.each do |service| %>
-
+          <div id="table">
+            <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+              <thead>
                 <tr>
-                  <td ><b><%= service.name %></b></td>
-
+                  <th>Service</th>
                   <% @days.each do |day| %>
-                    <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
-                    <%  if e %>
-                      <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %> "><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
-                    <% else %>
-                      <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
-                    <% end %>
+                    <th><%= day.strftime('%m/%d/%Y') %></th>
                   <% end %>
-
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
-  </div>
+              </thead>
+              <tbody>
+                <% @services.each do |service| %>
+
+                  <tr>
+                    <td ><b><%= service.name %></b></td>
+
+                    <% @days.each do |day| %>
+                      <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
+                      <%  if e %>
+                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %> "><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                      <% else %>
+                        <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                      <% end %>
+                    <% end %>
+
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
 
           <p>
           <div class="content-box corners">
@@ -104,14 +90,14 @@
         </section>
         <!-- End of Left column/section -->
 
-        <%= render :partial => "/common/right_column"  %>
+
 
       </div>
       <!-- End of Wrapper -->
     </div>
     <!-- End of Page content -->
 
-    <%= render :partial => "/common/footer"  %>
+
 
 
   </body>
