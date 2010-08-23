@@ -31,7 +31,7 @@
             <th>First name</th>
             <th>Last name</th>
             <th>Email</th>
-            <th colspan="3">Actions</th>
+            <th colspan="2">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +40,6 @@
               <td><%=h user.first_name %></td>
               <td><%=h user.last_name %></td>
               <td><%=h user.email %></td>
-              <td><%= link_to 'Show', user %></td>
               <td><%= link_to 'Edit', edit_user_path(user) %></td>
               <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
             </tr>
@@ -48,7 +47,9 @@
         </tbody>
       </table>
 
-      <%= link_to 'New user', new_user_path %>
+    <%= button_to 'New user', new_user_path, :class => "btn" %>
+
+    <p>&nbsp;</p>
 
     </section>
     <!-- End of Left column/section -->

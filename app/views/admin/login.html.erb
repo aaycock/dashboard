@@ -53,10 +53,17 @@
         <h3>Login</h3>
 
 
-        <div class="box box-info">Login below and we'll send you right along.</div>
-        <% if flash[:notice] -%>
-          <div class="box box-error"><%= flash[:notice] %></div>
-        <% end %>
+        
+        <% if flash[:warning] -%>
+          <div class="box box-error"><%= flash[:warning] %></div>
+          <% end %>
+        <% if flash[:success] -%>
+          <div class="box box-success"><%= flash[:success] %></div>
+          <% end %>
+        <% if !flash[:success] && !flash[:warning] %>
+          <div class="box box-info">Login below and we'll send you right along.</div>
+         <% end %>
+
 
         <% form_tag do %>
           <p>
@@ -80,17 +87,19 @@
 
           <% end %>
 
-          <form id="emailform" style="display:none" method="post" action="#">
+          <% form_tag "/admin/forgot_password", :id => "emailform", :style => "display:none" do %>
+          
             <div class="box">
               <p id="emailinput">
                 <label for="email">Email:</label><br/>
-                <input type="text" id="email" class="full" value="" name="email"/>
+                <%= text_field_tag :email, params[:email], :class => "full" %>
               </p>
               <p>
-                <input type="submit" class="btn" value="Send"/>
+                <%= submit_tag "Send", :class => "btn" %>
               </p>
             </div>
-          </form>
+          
+          <% end %>
 
         </section>
         <!-- End of login form -->

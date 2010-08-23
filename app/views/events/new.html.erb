@@ -1,7 +1,7 @@
 <!-- Page title -->
 <div id="pagetitle">
   <div class="wrapper">
-    <h1>Service &rarr; <span>Edit</span></h1>
+    <h1>User &rarr; <span>Add</span></h1>
     <!-- Quick search box -->
     <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
   </div>
@@ -18,25 +18,30 @@
           <h3> </h3>
           <div class="box box-info">All fields are required</div>
 
-          <% form_for(@user) do |f| %>
+          <% form_for(@event) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.label :service_id %><br />
+    <%= f.collection_select :service_id, Service.all, :id, :name, :prompt => true  %>
   </p>
   <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :timestamp %><br />
+    <%= f.datetime_select :timestamp %>
   </p>
   <p>
-<%= f.submit 'Update', :class => "btn" %> or <a href="/users">Cancel</a>
+    <%= f.label :level %><br />
+    <%= f.select :level, Event::LEVELS, :prompt => "Select a level"  %>
+  </p>
+  <p>
+    <%= f.label :message %><br />
+    <%= f.text_area :message, :cols => "50", :rows => "3" %>
+  </p>
+  <p>
+    <%= f.submit "Add Event", :class => "btn" %> or <a href="/admin/home">Cancel</a>
   </p>
 <% end %>
+
 
       <p>&nbsp;</p>
 

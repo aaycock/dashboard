@@ -1,6 +1,24 @@
-<h1>New user</h1>
+<!-- Page title -->
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>User &rarr; <span>Add</span></h1>
+    <!-- Quick search box -->
+    <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+  </div>
+</div>
+<!-- End of Page title -->
 
-<% form_for(@user) do |f| %>
+<!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
+
+          <h3> </h3>
+          <div class="box box-info">All fields are required</div>
+
+          <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
 <fieldset>
@@ -28,9 +46,24 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.submit "Add User", :class => "submit" %>
+    <%= f.submit "Add User", :class => "btn" %> or <a href="/users">Cancel</a>
   </p>
   </fieldset>
 <% end %>
+
+
+      <p>&nbsp;</p>
+
+
+
+    </section>
+    <!-- End of Left column/section -->
+
+    <%= render :partial => "/common/right_column"  %>
+
+  </div>
+  <!-- End of Wrapper -->
+  </div>
+  <!-- End of Page content -->
 
 <%= link_to 'Back', users_path %>

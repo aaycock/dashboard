@@ -1,0 +1,34 @@
+<% @page_name = 'Admin' %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Meta -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!-- End of Meta -->
+
+    <!-- Page title -->
+     <title>Events: <%= controller.action_name %></title>
+    <!-- End of Page title -->
+
+    <%= render :partial => "/common/includes"  %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        /* setup navigation, content boxes, etc... */
+        Administry.setup();
+      });
+    </script>
+
+  </head>
+  <body>
+
+    <%= render :partial => "/common/header"  %>
+
+    <%= yield %>
+
+    <!-- Right Column include here -->
+
+  <%= render :partial => "/common/footer"  %>
+
+
+  </body>
+  </html>

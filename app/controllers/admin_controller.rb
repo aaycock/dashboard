@@ -1,10 +1,37 @@
 class AdminController < ApplicationController
 
+  # GET /admin
+  # GET /admin.xml
+  def home
+    user_id = session[:user_id]
+    user = User.find(user_id)
+    account_id = Account.find(user.account_id)
+    @services = Service.find_all_by_account_id(account_id)
+    time = Time.now
+    @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
 
-   # GET /admin/my_account
+    @history_hash = Hash.new
+
+    @services.each do |service|
+      @days.each do |day|
+          event = Event.find_by_sql ["select * from events where events.service_id = ? and strftime('%m/%d/%Y', events.timestamp) = ?", service.id, day.strftime("%m/%d/%Y")]
+        if event.length > 0
+          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = event[0].level
+        end
+      end
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @services }
+    end
+  end
+
+  # GET /admin/my_account
   def my_account
     @user = User.find(session[:user_id])
   end
+
 
   def login
     if request.post?
@@ -16,10 +43,10 @@ class AdminController < ApplicationController
         session[:user_last_name] = user.last_name
         uri = session[:original_uri]
         session[:original_uri] = nil
-        redirect_to(uri || { :action => "index"})
+        redirect_to(uri || { :action => "home"})
         #redirect_to(:action => "index")
       else
-        flash.now[:notice] = "Invalid username/password"
+        flash.now[:warning] = "Invalid username/password"
       end
     end
   end
@@ -31,7 +58,38 @@ class AdminController < ApplicationController
     redirect_to( :action => "login")
   end
 
-  def index
+  def forgot_password
+    if request.post?
+      logger.debug "Inside password reset!!!"
+      u= User.find_by_email(params[:email])
+      if u and u.send_new_password
+        flash[:success]  = "A new password has been sent by email."
+        redirect_to :action => "login"
+      else
+        flash[:warning]  = "Couldn't send password"
+      end
+    end
   end
 
-end
+  def reset_password
+    @user = User.find(session[:user_id])
+    if request.post?
+      if(params[:password] != params[:password_confirmation])
+        flash[:error]="Passwords don't match"
+        redirect_to( :action => "reset_password")
+      else
+        @user.update_attributes(:password=>params[:password], :password_confirmation => params[:password_confirmation])
+        if @user.save
+          flash[:success]="Password Changed"
+        else
+          flash[:error]="Couldn't update password"
+        end
+        redirect_to( :action => "my_account")
+      end
+    end
+  end
+
+    def index
+    end
+
+  end

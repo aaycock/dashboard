@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  timestamp: 2010-08-22 22:03:28
+  level: 1
+  message: MyText
+
+two:
+  timestamp: 2010-08-22 22:03:28
+  level: 1
+  message: MyText

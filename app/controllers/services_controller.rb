@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
     user = User.find(user_id)
     account_id = Account.find(user.account_id)
     @services = Service.find_all_by_account_id(account_id)
-    # TODO Link users to account and filter by account ID
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +45,7 @@ class ServicesController < ApplicationController
   # POST /services.xml
   def create
     #logger.debug "account_id: #{params[:account_id]}"
-   @account = Account.find(1) # TODO Replace with real account_id from session
+   @account = Account.find(session[:account_id]) # TODO Replace with real account_id from session
    @service = @account.services.create!(params[:service])
    respond_to do |format|
      format.html { redirect_to("/services", :notice => 'Service was successfully created.')}

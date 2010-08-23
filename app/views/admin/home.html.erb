@@ -1,0 +1,93 @@
+<% @page_name = 'Home' %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>StatusDashboard - Home</title>
+    <meta name="description" content="Administry - Admin Template by Zoran Juric" />
+    <meta name="keywords" content="Admin,Template" />
+
+    <%= render :partial => "/common/includes" %>
+
+
+
+  </head>
+  <body>
+
+    <%= render :partial => "/common/header" %>
+
+    <!-- Page title -->
+    <div id="pagetitle">
+      <div class="wrapper">
+        <h1>Service &rarr; <span>List</span></h1>
+        <!-- Quick search box -->
+        <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+      </div>
+    </div>
+    <!-- End of Page title -->
+
+    <!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
+
+          <p>
+            <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
+          </p>
+
+          <h3>What your customers see:</h3>
+
+          <% if flash[:notice] -%>
+
+            <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+
+          <% end %>
+
+          <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <% @days.each do |day| %>
+                  <th><%= day.strftime('%m/%d/%Y') %></th>
+                <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @services.each do |service| %>
+
+                <tr>
+                  <td ><%= service.name %></td>
+
+                  <% @days.each do |day| %>
+                  <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
+                    <%  if e %>
+                      <td align="center" ><img src="/img/table/<%=  e %>.png" alt="" /></td>
+                    <% else %>
+                      <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                    <% end %>
+                  <% end %>
+
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+
+        </section>
+        <!-- End of Left column/section -->
+
+        <%= render :partial => "/common/right_column"  %>
+
+      </div>
+      <!-- End of Wrapper -->
+    </div>
+    <!-- End of Page content -->
+
+    <%= render :partial => "/common/footer"  %>
+
+
+  </body>
+</html>

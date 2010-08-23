@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :dashboards
+
+  map.resources :events
+
   map.resources :users
 
   map.resources :accounts, :has_many => :services

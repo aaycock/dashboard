@@ -1,23 +1,49 @@
-<h1>New service</h1>
+<!-- Page title -->
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>Service &rarr; <span>Add</span></h1>
+    <!-- Quick search box -->
+    <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+  </div>
+</div>
+<!-- End of Page title -->
 
-<% form_for(@service) do |f| %>
-  <%= f.error_messages %>
+<!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
 
-  <p>
-    <%= f.label :account_id %><br />
-    <%= f.text_field :account_id %>
-  </p>
+          <h3> </h3>
+          <div class="box box-info">All fields are required</div>
+
+          <% form_for(@service) do |f| %>
+          <div class="box box-error"><%= f.error_messages %></div>
+
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :rows => "4", :cols => "50" %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+<%= f.submit 'Create', :class => "btn" %> or <a href="/services">Cancel</a>
   </p>
 <% end %>
 
-<%= link_to 'Back', services_path %>
+      <p>&nbsp;</p>
+
+
+
+    </section>
+    <!-- End of Left column/section -->
+
+    <%= render :partial => "/common/right_column"  %>
+
+  </div>
+  <!-- End of Wrapper -->
+  </div>
+  <!-- End of Page content -->
