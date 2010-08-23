@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+
+  layout 'events', :except => :show
+
+
   # GET /events
   # GET /events.xml
   def index

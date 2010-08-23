@@ -3,20 +3,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Event</title>
-    
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
     <div id="modal">
       <h1>Event Details</h1>
       <p>
-        <strong>Time: </strong><%=  @event.timestamp %> <br />
-        <strong>Level: </strong><%= Event::LEVELS[@event.level][0] %> <br />
-        <hr />
+        <strong><%=  @event.timestamp %></strong> <%= @event.level %> <br />
         <%= @event.message %>
-        <small></small>
+        <small><a href="#" class="delete-link" title="Delete">Delete</a></small>
       </p>
-      
+      <hr />
 
     </div> <!-- End #messages -->
 

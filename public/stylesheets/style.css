@@ -128,7 +128,7 @@ body {
     font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height:1.5;
     font-size:12px;
-    background-color:#F2F2F2;
+    background-color:#FFFFFF;
     color:#666;
     margin:0 auto;
 }
@@ -1031,6 +1031,8 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
     background-color:#FFF;
 }
 
+
+
 #page a {
     color: #329ECC;
     text-decoration:none;
@@ -1038,7 +1040,7 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
 }
 #page a:hover, #page a:focus, #page a:active {
     background-color:#E2EFFF;
-    border-bottom:1px solid #329ECC;
+    border-bottom:1px solid #329ECC; 
 }
 
 #page .subtitle {
@@ -1048,16 +1050,19 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
     font-family: Tahoma, Arial, sans-serif;
 }
 
+
+
 /* Footers
 ---------------------------------------------------------------------*/
 
 footer#bottom {
-    background-color:#F2F2F2;
+    background-color:#FFFFFF;
     border-top:4px solid #D9D9D9;
     color:#999;
     float:left;
     font-size:11px;
     width:100%;
+    /*
     background:-webkit-gradient(
         linear,
         left bottom,
@@ -1070,6 +1075,7 @@ footer#bottom {
         rgb(242,242,242) 20%,
         rgb(254,254,254) 80%
         );
+    */
     padding-bottom:2em;
 }
 footer#bottom nav{

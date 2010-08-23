@@ -19,7 +19,7 @@
           <div class="box box-info">All fields are required</div>
 
           <% form_for(@service) do |f| %>
-          <div class="box box-error"><%= f.error_messages %></div>
+          <%= f.error_messages %>
 
   <p>
     <%= f.label :name %><br />

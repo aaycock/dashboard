@@ -7,7 +7,8 @@ class AdminController < ApplicationController
     user = User.find(user_id)
     account_id = Account.find(user.account_id)
     @services = Service.find_all_by_account_id(account_id)
-    time = Time.now
+    offset = 3
+    time = Time.now-offset.days
     @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
 
     @history_hash = Hash.new
@@ -16,7 +17,34 @@ class AdminController < ApplicationController
       @days.each do |day|
           event = Event.find_by_sql ["select * from events where events.service_id = ? and strftime('%m/%d/%Y', events.timestamp) = ?", service.id, day.strftime("%m/%d/%Y")]
         if event.length > 0
-          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = event[0].level
+          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ event[0].id, event[0].level ]
+        end
+      end
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @services }
+    end
+  end
+
+  # GET /dashboard/1
+  # GET /dashboard/1.xml
+  def dashboard
+    account_id = params[:id]
+    
+    @services = Service.find_all_by_account_id(account_id)
+    offset = 3
+    time = Time.now-offset.days
+    @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
+
+    @history_hash = Hash.new
+
+    @services.each do |service|
+      @days.each do |day|
+          event = Event.find_by_sql ["select * from events where events.service_id = ? and strftime('%m/%d/%Y', events.timestamp) = ?", service.id, day.strftime("%m/%d/%Y")]
+        if event.length > 0
+          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ event[0].id, event[0].level ]
         end
       end
     end
