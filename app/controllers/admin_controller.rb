@@ -4,11 +4,15 @@ class AdminController < ApplicationController
   # GET /admin.xml
   def home
     user_id = session[:user_id]
+    @offset = params[:offset].to_i
+    if @offset.nil?
+      @offset = 0
+    end
     user = User.find(user_id)
     account_id = Account.find(user.account_id)
     @services = Service.find_all_by_account_id(account_id)
-    offset = 3
-    time = Time.now-offset.days
+
+    time = Time.now-@offset.days
     @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
 
     @history_hash = Hash.new
@@ -35,8 +39,11 @@ class AdminController < ApplicationController
     account_id = params[:id]
     
     @services = Service.find_all_by_account_id(account_id)
-    offset = 3
-    time = Time.now-offset.days
+    @offset = params[:offset].to_i
+    if @offset.nil?
+      @offset = 0
+    end
+    time = Time.now-@offset.days
     @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
 
     @history_hash = Hash.new

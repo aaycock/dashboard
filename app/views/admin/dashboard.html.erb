@@ -43,7 +43,11 @@
                 <tr>
                   <th>Service</th>
                   <% @days.each do |day| %>
-                    <th><%= day.strftime('%m/%d/%Y') %></th>
+                    <% if day.strftime('%m/%d/%Y') == Time.now.strftime('%m/%d/%Y') %>
+                      <th>Today</th>
+                    <% else %>
+                      <th><%= day.strftime('%m/%d/%Y') %></th>
+                    <% end %>
                   <% end %>
                 </tr>
               </thead>
@@ -65,6 +69,13 @@
                   </tr>
                 <% end %>
               </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4"></td>
+                  <td align="center" ><% if @offset > 4 %><a href="/admin/dashboard/<%= session[:account_id] %>?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
+                  <td align="center"><a href="/admin/dashboard/<%= session[:account_id] %>?offset=<%= @offset+5 %> ">Older ></a></td>
+                </tr>
+              </tfoot>
             </table>
           </div>
 
@@ -74,12 +85,15 @@
               <h3>Status Types</h3>
             </header>
             <section>
-              <p><img src="/img/table/0.png"/>&nbsp; No Issues &nbsp;&nbsp;
-                <img src="/img/table/1.png"/>&nbsp; Info Available &nbsp;&nbsp;
-                <img src="/img/table/2.png"/>&nbsp; Planned Maintenance &nbsp;&nbsp;
-                <img src="/img/table/3.png"/>&nbsp; Degradation &nbsp;&nbsp;
-                <img src="/img/table/4.png"/>&nbsp; Outage </p>
-
+            <table  >
+                <tr>
+                  <td width="15%"><img src="/img/table/0.png"/>&nbsp; No Issues</td>
+                  <td width="17%"><img src="/img/table/1.png"/>&nbsp; Info Available</td>
+                  <td width="24%"><img src="/img/table/2.png"/>&nbsp; Planned Maintenance</td>
+                  <td width="17%"><img src="/img/table/3.png"/>&nbsp; Degradation</td>
+                  <td width="20%"><img src="/img/table/4.png"/>&nbsp; Outage</td>
+                </tr>
+              </table>
             </section>
           </div>
           </p>
