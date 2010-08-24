@@ -1,0 +1,95 @@
+@charset "UTF-8"; /* http://www.w3.org/International/questions/qa-css-charset */
+
+/*  -------------------------------------------------------------
+ 
+    QUADRO
+ 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    Description:Table cascading style sheet
+    Nom:table.css
+    Version:1.0
+    Date:October 22th, 2009
+ 
+    This file is part of a site template for sale at ThemeForest.net.
+    See: http://themeforest.net/user/simonbouchard/portfolio
+    Copyright �2009 Simon Bouchard <info@simonbouchard.com>
+ 
+-------------------------------------------------------------   */
+
+/*  -------------------------------------------------------------
+    STYLES FOR SCREEN / PROJECTION
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+.table-a {
+    font-size: 12px;
+    width: 100%;
+    margin: 20px 0;
+    text-shadow: 0 1px 0 #fff; }
+
+.table-a h2 {
+    font-size:20px;
+    font-weight: bold; }
+
+.table-a th {
+    border-bottom: solid 3px #bbb; }
+
+.table-a th, .table-a td {
+    padding: 7px; }
+
+.table-a td img {
+    vertical-align: bottom;
+    width: 20px;
+    height: 20px }
+
+.table-a .light, .table-a .dark, .table-a .vdark {
+    margin: 3px; }
+
+.table-a .light {
+    color: #858585; }
+
+.table-a .dark {
+    color: #6a6a6a; }
+
+.table-a .vdark {
+    color: #444444; }
+
+.table-a .right {
+    border-left: solid 1px #bbb;
+    font-weight: bold; }
+
+.table-a tr.odd {
+    background: #f1f1f1; }
+
+.table-a tr.final {
+    border-top: solid 3px #bbb; }
+
+.table-a tr.final td {
+    padding:20px 0 0 0; }
+
+.table-a .price {
+    font-size: 16px }
+
+.table-a sup {
+    font-weight: normal;
+    font-size: 13px; }
+
+.table-a .left {
+    width: 25%; }
+
+.lefttitle {
+    text-align: right; }
+
+a.button {
+    padding: 0;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: -1px;
+    text-decoration: none;
+    text-align: center; }
+    
+/*  -------------------------------------------------------------
+    CLOSING STYLES FOR SCREEN / PROJECTION
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+}

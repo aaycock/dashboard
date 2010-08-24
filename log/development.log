@@ -26972,3 +26972,1590 @@ ActionController::RoutingError (No route matches "/admin/dashboard/images/closel
   g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
 
 Rendering rescues/layout (not_found)
+
+
+Processing AdminController#logout (for 127.0.0.1 at 2010-08-23 22:19:25) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/login
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/admin/logout]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-23 22:19:25) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 62ms (View: 62, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#forgot_password (for 127.0.0.1 at 2010-08-23 22:19:31) [POST]
+  Parameters: {"authenticity_token"=>"3Rnps1UunC6e/ccW8VFTYgH72KT17CFskvySeK4pYSU=", "email"=>"aaron.aycock@gmail.com", "commit"=>"Send"}
+Inside password reset!!!
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (31.2ms)[0m   [0mUPDATE "users" SET "salt" = '180715520.514797228294409', "hashed_password" = 'cf5c954bc8ffb2c42b89e2941857ca84c6ee15a4', "updated_at" = '2010-08-24 02:19:31' WHERE "id" = 1[0m
+Sent mail to aaron.aycock@gmail.com
+
+Date: Mon, 23 Aug 2010 22:19:31 -0400
+From: support@statusdashboard.com
+To: aaron.aycock@gmail.com
+Subject: Your password is ...
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4c732c33b34a7_15e0137aa801dd
+
+
+--mimepart_4c732c33b34a7_15e0137aa801dd
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+Your username is aaron.aycock@gmail.com. Your new password is FlpmDGU7Ye.=
+ Login to http://localhost:3000/admin/reset_password  and change it to so=
+mething more memorable.=
+
+--mimepart_4c732c33b34a7_15e0137aa801dd--
+Redirected to http://localhost:3000/admin/login
+Completed in 953ms (DB: 31) | 302 Found [http://localhost/admin/forgot_password]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-23 22:19:32) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-23 22:20:23) [POST]
+  Parameters: {"authenticity_token"=>"3Rnps1UunC6e/ccW8VFTYgH72KT17CFskvySeK4pYSU=", "email"=>"aaron.aycock@gmail.com", "password"=>"FlpmDGU7Ye", "commit"=>"Login"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com') LIMIT 1[0m
+Redirected to http://localhost:3000/admin/home
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/admin/login]
+
+
+Processing AdminController#home (for 127.0.0.1 at 2010-08-23 22:20:23) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mService Load (0.0ms)[0m   [0;1mSELECT * FROM "services" WHERE ("services"."account_id" = 1) [0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-20 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-19 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-18 22:20:23')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-17 22:20:23')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-16 22:20:23')[0m
+Rendering admin/home
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/home]
+
+
+Processing AdminController#images to gif (for 127.0.0.1 at 2010-08-23 22:20:24) [GET]
+  Parameters: {"id"=>"closelabel"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to images. Actions: dashboard, forgot_password, home, index, login, logout, my_account, and reset_password):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#my_account (for 127.0.0.1 at 2010-08-23 22:20:26) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering admin/my_account
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/admin/my_account]
+
+
+Processing AdminController#reset_password (for 127.0.0.1 at 2010-08-23 22:20:28) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering admin/reset_password
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/admin/reset_password]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-23 22:20:46) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-24 01:14:09) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:35) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:35) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/css/jquery.lightbox-0.5.css" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot2.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot3.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot4.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot5.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:36) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot6.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:38) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:38) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:38) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:41) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:42) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:42) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:51) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/css/jquery.lightbox-0.5.css" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:51) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot3.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot2.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot4.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot5.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:52) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot6.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:53) [GET]
+
+ActionController::RoutingError (No route matches "/assets/js/jquery.infieldlabel.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:53) [GET]
+
+ActionController::RoutingError (No route matches "/assets/js/form.validation.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:53) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:53) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:54) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:54) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/css/jquery.lightbox-0.5.css" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot4.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot3.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot2.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot5.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot6.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:56) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:56) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:16:56) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:19:30) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:19:31) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:19:31) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:13) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:14) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:14) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:24) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:24) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:43) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:44) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:20:44) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:21:11) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:21:11) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:21:11) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:21:26) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:21:26) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:21:26) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:22:10) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:22:10) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:22:10) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:22:20) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:22:20) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:22:20) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:06) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:06) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:07) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:28) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:28) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:28) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:43) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:43) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:23:43) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:25:51) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:25:52) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:25:52) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:26:16) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:26:17) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:26:17) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:26:43) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:26:44) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:26:44) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:23) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-24 02:27:25) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:31) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:31) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/css/jquery.lightbox-0.5.css" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:32) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:32) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:32) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:32) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot3.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:32) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot2.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:32) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot4.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:33) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot5.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:33) [GET]
+
+ActionController::RoutingError (No route matches "/images/apps_screenshot6.png" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:49) [GET]
+
+ActionController::RoutingError (No route matches "/assets/js/jquery.infieldlabel.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:50) [GET]
+
+ActionController::RoutingError (No route matches "/assets/js/form.validation.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:50) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:50) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:52) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:53) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:55) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:56) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-24 02:27:56) [GET]
+
+ActionController::RoutingError (No route matches "/assets/fonts/DroidSans.ttf" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-24 02:28:01) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-24 02:28:06) [POST]
+  Parameters: {"authenticity_token"=>"3Rnps1UunC6e/ccW8VFTYgH72KT17CFskvySeK4pYSU=", "email"=>"aaron.aycock@gmail.com", "password"=>"password", "commit"=>"Login"}
+  [4;35;1mUser Load (15.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com') LIMIT 1[0m
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-24 02:28:15) [POST]
+  Parameters: {"authenticity_token"=>"3Rnps1UunC6e/ccW8VFTYgH72KT17CFskvySeK4pYSU=", "email"=>"aaron.aycock@gmail.com", "password"=>"password", "commit"=>"Login"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com') LIMIT 1[0m
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#forgot_password (for 127.0.0.1 at 2010-08-24 02:28:18) [POST]
+  Parameters: {"authenticity_token"=>"3Rnps1UunC6e/ccW8VFTYgH72KT17CFskvySeK4pYSU=", "email"=>"aaron.aycock@gmail.com", "commit"=>"Send"}
+Inside password reset!!!
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (15.6ms)[0m   [0mUPDATE "users" SET "salt" = '129624160.795566136346509', "hashed_password" = 'd2192469aa6ddd419059e6a7d59cbbc9a1923dce', "updated_at" = '2010-08-24 06:28:18' WHERE "id" = 1[0m
+Sent mail to aaron.aycock@gmail.com
+
+Date: Tue, 24 Aug 2010 02:28:19 -0400
+From: support@statusdashboard.com
+To: aaron.aycock@gmail.com
+Subject: Your password is ...
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4c73668329f63_15e013994a04db
+
+
+--mimepart_4c73668329f63_15e013994a04db
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+Your username is aaron.aycock@gmail.com. Your new password is Es3FZXIqT3.=
+ Login to http://localhost:3000/admin/reset_password  and change it to so=
+mething more memorable.=
+
+--mimepart_4c73668329f63_15e013994a04db--
+Redirected to http://localhost:3000/admin/login
+Completed in 1578ms (DB: 16) | 302 Found [http://localhost/admin/forgot_password]
+
+
+Processing AdminController#login (for 127.0.0.1 at 2010-08-24 02:28:20) [GET]
+Rendering admin/login
+Rendered common/_includes (0.0ms)
+Rendered common/_login_header (0.0ms)
+Rendered common/_login_footer (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/admin/login]
+
+
+Processing AdminController#reset_password (for 127.0.0.1 at 2010-08-24 02:28:35) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering admin/reset_password
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/reset_password]
+
+
+Processing AdminController#reset_password (for 127.0.0.1 at 2010-08-24 02:28:39) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering admin/reset_password
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/admin/reset_password]
+
+
+Processing AdminController#reset_password (for 127.0.0.1 at 2010-08-24 02:28:50) [POST]
+  Parameters: {"authenticity_token"=>"3Rnps1UunC6e/ccW8VFTYgH72KT17CFskvySeK4pYSU=", "password"=>"password", "password_confirmation"=>"password", "commit"=>"Update"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (0.0ms)[0m   [0mUPDATE "users" SET "salt" = '275058240.875349672877093', "hashed_password" = '4c71d688b4f765d599f7832d3bdf1782c70a450b', "updated_at" = '2010-08-24 06:28:50' WHERE "id" = 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'aaron.aycock@gmail.com' AND "users".id <> 1) LIMIT 1[0m
+Redirected to http://localhost:3000/admin/my_account
+Completed in 47ms (DB: 0) | 302 Found [http://localhost/admin/reset_password]
+
+
+Processing AdminController#my_account (for 127.0.0.1 at 2010-08-24 02:28:50) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering admin/my_account
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 31ms (View: 31, DB: 0) | 200 OK [http://localhost/admin/my_account]
+
+
+Processing AdminController#home (for 127.0.0.1 at 2010-08-24 02:28:54) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mAccount Load (15.6ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mService Load (0.0ms)[0m   [0;1mSELECT * FROM "services" WHERE ("services"."account_id" = 1) [0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;36;1mEvent Load (15.6ms)[0m   [0;1mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 1 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 2 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 3 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 5 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 10 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 11 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 15 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 16 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 17 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 18 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-21 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-20 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-19 02:28:54')[0m
+  [4;36;1mEvent Load (0.0ms)[0m   [0;1mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-18 02:28:54')[0m
+  [4;35;1mEvent Load (0.0ms)[0m   [0mselect * from events where events.service_id = 19 and date(events.timestamp) = date('2010-08-17 02:28:54')[0m
+Rendering admin/home
+Rendered common/_includes (0.0ms)
+Rendered common/_header (0.0ms)
+Rendered common/_right_column (0.0ms)
+Rendered common/_footer (0.0ms)
+Completed in 47ms (View: 0, DB: 31) | 200 OK [http://localhost/admin/home]
+
+
+Processing AdminController#images to gif (for 127.0.0.1 at 2010-08-24 02:28:54) [GET]
+  Parameters: {"id"=>"closelabel"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to images. Actions: dashboard, forgot_password, home, index, login, logout, my_account, and reset_password):
+  <internal:prelude>:8:in `synchronize'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  g:/downloads/dev/Ruby191/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
