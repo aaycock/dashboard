@@ -15,7 +15,8 @@ class AdminController < ApplicationController
 
     @services.each do |service|
       @days.each do |day|
-          event = Event.find_by_sql ["select * from events where events.service_id = ? and strftime('%m/%d/%Y', events.timestamp) = ?", service.id, day.strftime("%m/%d/%Y")]
+
+          event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
         if event.length > 0
           @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ event[0].id, event[0].level ]
         end
@@ -42,7 +43,7 @@ class AdminController < ApplicationController
 
     @services.each do |service|
       @days.each do |day|
-          event = Event.find_by_sql ["select * from events where events.service_id = ? and strftime('%m/%d/%Y', events.timestamp) = ?", service.id, day.strftime("%m/%d/%Y")]
+          event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
         if event.length > 0
           @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ event[0].id, event[0].level ]
         end
