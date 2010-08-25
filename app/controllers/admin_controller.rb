@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   # GET /admin
   # GET /admin.xml
   def home
+    @edit = true
     user_id = session[:user_id]
     @offset = params[:offset].to_i
     if @offset.nil?
@@ -22,7 +23,11 @@ class AdminController < ApplicationController
 
           event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
         if event.length > 0
-          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ event[0].id, event[0].level ]
+          if day.strftime("%m/%d/%Y") != Time.now.strftime("%m/%d/%Y")
+            event[0].level = 1
+          end
+          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ service.id, event[0].level, event[0].timestamp.strftime("%Y-%m-%d") ]
+          
         end
       end
     end
@@ -36,6 +41,7 @@ class AdminController < ApplicationController
   # GET /dashboard/1
   # GET /dashboard/1.xml
   def dashboard
+    @edit=false
     account_id = params[:id]
     
     @services = Service.find_all_by_account_id(account_id)
@@ -50,9 +56,14 @@ class AdminController < ApplicationController
 
     @services.each do |service|
       @days.each do |day|
-          event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
+
+        event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
         if event.length > 0
-          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ event[0].id, event[0].level ]
+          if day.strftime("%m/%d/%Y") != Time.now.strftime("%m/%d/%Y")
+            event[0].level = 1
+          end
+          @history_hash[service.id.to_s + "-" + (day.strftime("%m/%d/%Y"))] = [ service.id, event[0].level, event[0].timestamp.strftime("%Y-%m-%d") ]
+
         end
       end
     end

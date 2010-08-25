@@ -26,7 +26,7 @@
     <!-- Page title -->
     <div id="pagetitle">
       <div class="wrapper">
-        <h1>Service &rarr; <span>List</span></h1>
+        <h1>Dashboard &rarr; <span>Home</span></h1>
         <!-- Quick search box -->
         <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
       </div>
@@ -44,7 +44,8 @@
             <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
           </p>
 
-          <h3>What your customers see:</h3>
+          <% url = "http://statusdashboard.com/admin/dashboard/" + session[:account_id].to_s  %>
+          <h3>External URL: <a target="_blank" href="<%= url %>"><%= url %></a></h3>
 
           <% if flash[:notice] -%>
 
@@ -74,7 +75,7 @@
                     <% @days.each do |day| %>
                       <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
                       <%  if e %>
-                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %> "><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>&admin=true"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
                       <% else %>
                         <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
                       <% end %>
