@@ -17,8 +17,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
-    @event = Event.find(params[:id])
-
+    @edit = params[:admin]
+    @events = Event.find_by_sql ["select * from events where service_id = ? and  date(timestamp) = ? order by timestamp desc", params[:id], params[:date]]
+    logger.debug "events: #{@events.length}"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
@@ -64,7 +65,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
+        format.html { redirect_to("/admin/home", :notice => 'Event was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

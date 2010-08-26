@@ -16,19 +16,15 @@
 
       });
     </script>
-
-
   </head>
+
   <body>
-
-
     <!-- Page content -->
     <div id="page">
       <!-- Wrapper -->
       <div class="wrapper">
         <!-- Left column/section -->
         <section class="column width6 first">
-
 
           <h3>TRX Internal Dashboard</h3>
 
@@ -52,15 +48,15 @@
                 </tr>
               </thead>
               <tbody>
-                <% @services.each do |service| %>
 
+                <% @services.each do |service| %>
                   <tr>
                     <td ><b><%= service.name %></b></td>
 
                     <% @days.each do |day| %>
                       <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
                       <%  if e %>
-                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %> "><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
                       <% else %>
                         <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
                       <% end %>
@@ -85,7 +81,7 @@
               <h3>Status Types</h3>
             </header>
             <section>
-            <table  >
+              <table  >
                 <tr>
                   <td width="15%"><img src="/img/table/0.png"/>&nbsp; No Issues</td>
                   <td width="17%"><img src="/img/table/1.png"/>&nbsp; Info Available</td>

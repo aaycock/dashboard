@@ -37,7 +37,7 @@
     <td><%=h service.name %></td>
     <td><%=h service.description %></td>
     <td><%= link_to 'Edit', edit_service_path(service) %></td>
-    <td><%= link_to image_tag("/img/delete.png", :border=>0), service, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Delete', service, :confirm => 'Are you sure?', :method => :delete %></td>
                   </tr>
                 <% end %>
               </tbody>

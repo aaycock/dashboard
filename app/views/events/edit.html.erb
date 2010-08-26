@@ -1,6 +1,24 @@
-<h1>Editing event</h1>
+<!-- Page title -->
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>Event &rarr; <span>Edit</span></h1>
+    <!-- Quick search box -->
+    <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+  </div>
+</div>
+<!-- End of Page title -->
 
-<% form_for(@event) do |f| %>
+<!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
+
+          <h3> </h3>
+          <div class="box box-info">All fields are required</div>
+
+          <% form_for(@event) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -21,9 +39,22 @@
     <%= f.text_area :message %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit "Edit Event", :class => "btn" %> or <a href="/admin/home">Cancel</a>
   </p>
 <% end %>
+    
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+
+      <p>&nbsp;</p>
+
+
+
+    </section>
+    <!-- End of Left column/section -->
+
+    <%= render :partial => "/common/right_column"  %>
+
+  </div>
+  <!-- End of Wrapper -->
+  </div>
+  <!-- End of Page content -->

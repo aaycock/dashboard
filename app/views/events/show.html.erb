@@ -3,20 +3,26 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Event</title>
-    
+
   </head>
 
   <body>
     <div id="modal">
       <h1>Event Details</h1>
-      <p>
-        <strong>Time: </strong><%=  @event.timestamp %> <br />
-        <strong>Level: </strong><%= Event::LEVELS[@event.level][0] %> <br />
-        <hr />
-        <%= @event.message %>
-        <small></small>
-      </p>
       
+        <hr />
+
+        <% @events.each do |event| %>
+          <table>
+            <tr><th rowspan="3" valign="center"><img src="/img/table/<%= event.level %>.png"/> &nbsp;&nbsp;</th>
+              <td><strong>Time: </strong><%=  event.timestamp %> <%if @edit %> [<a href="/events/<%= event.id%>/edit">edit</a>]<% end %> </tr>
+            <td><strong>Level: </strong><%= Event::LEVELS[event.level][0] %></td>
+            <tr><td><strong>Message: </strong><%= event.message %></td></tr>
+          </table>
+          <hr/>
+        <% end %>
+
+
 
     </div> <!-- End #messages -->
 
