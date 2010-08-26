@@ -52,7 +52,7 @@ form input, form textarea {
     margin: 4px 0 13px 0;
     outline: none;
     padding: 10px;
-    width: 100%; }
+    width: 200px; }
 
 form input:hover, form textarea:hover { border: 1px solid #b5b4b4; }
 

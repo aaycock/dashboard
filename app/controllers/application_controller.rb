@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize, :except => [ :login, :forgot_password, :dashboard, :show ]
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  protect_from_forgery  :except => :create # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password

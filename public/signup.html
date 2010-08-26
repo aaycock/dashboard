@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>StatusDashboard - Get Support</title>
+    <title>StatusDashboard | Signup</title>
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     
@@ -17,26 +17,22 @@
     <meta name="copyright" content="" />
     <link rel="shortcut icon" href="favicon.ico" />
 
+
     <!-- Cascading Style Sheets -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/form.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/screen.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/typography.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/form.css" />
     
     <!--[if IE 6]>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/ie.css" />
     <![endif]-->    
 
     <!-- JavaScripts -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
-    <script type="text/ecmascript" src="assets/js/jquery.infieldlabel.js"></script>
-    <script type="text/ecmascript" src="assets/js/form.validation.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
     
     <!--[if IE 6]>
     <script src="assets/js/pngfix.js"></script>
     <![endif]-->    
-    <script type="text/javascript">
-        $(function(){ $("label").inFieldLabels(); });
-    </script>
 </head>
 <body class="subpage">
 
@@ -51,12 +47,12 @@
             
             <div class="top-nav">
                 
-            <h1>Quadro Beta</h1>
+            <h1>&nbsp;</h1>
         
-            <ul class="nav">
-                <li><a href="index.html" >Home</a></li>
-                <li><a href="pricing.html" >Pricing & Signup</a></li>
-                <li><a href="support.html" class="selected">Support</a></li>
+             <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pricing.html" class ="selected">Pricing & Signup</a></li>
+                <li><a href="support.html">Support</a></li>
                 <li><a href="https://secure.statusdashboard.com/admin/login">Login</a></li>
             </ul>
             
@@ -65,12 +61,7 @@
                         
             <div class="page-title">
                 
-                <h2>Support</h2>
-
-                <ul class="nav">
-                    <li><a href="support.html" class="selected">Contact Us</a></li>
-                    <li><a href="http://statusdashboard.zendesk.com/home">Support Forum</a></li>
-                </ul>
+                <h2>Get started in 60 seconds.</h2>
                                 
             </div>
                 
@@ -84,50 +75,38 @@
             <div class="content-top"></div>
             <div class="content clearfix">
                 
-
-                <h4>Contact Us</h4>
-                <p>Have questions or need information? Fill in this form or send an email to <a href="mailto:support@statusdashboard.com">support@statusdashboard.com</a>.</p>
-
-                <div class="colleft small">
                 
-                    <h5>Location</h5>
+                <h4>No-risk Signup</h4>
+                <p>You are just 60 seconds away from using your new StatusDashboard.</p>
+                <p><br /></p>
                 
-                    <ul class="nolist">
-                        <li>
-                            270 Sagamore Cove<br />
-                            Sugar Hill, GA<br />
-                        </li>
+
+                    <form id="contactform" action="/accounts" method="post" enctype="multipart/form-data">
                         
-                        <li><img src="images/icon-email.png" alt="Email" />&nbsp;&nbsp;<a href="mailto:support@statusdashboard.com">support@statusdashboard.com</a></li>
-                    </ul>
-                
-                </div>
-                <div class="colright">
+                        <ul>
 
-                    <h5>Online Form</h5>
-
-                    <form id="contactform" action="assets/php/mail.php" method="post" enctype="multipart/form-data">
-                        <div class="errorbox"></div> 
-                        <ul>                        
                             <li>
-                                <label for="name">Full Name</label>
-                                <input id="name" name="name" type="text"  />
+                                <b>Company Name &nbsp;&nbsp;</b>
+                                 <input id="account_name" name="account[name]" size="30" type="text" />
                             </li>
                             <li>
-                                <label for="email">Email</label>
-                                <input id="email" name="email" type="text" />
+                                <b>Your First Name&nbsp;&nbsp;&nbsp;</b>
+                                <input id="account_contact_firstname" name="account[contact_firstname]" size="30" type="text" />
+                            </li>
+                              <li>
+                                <b>Your Last Name&nbsp;&nbsp;&nbsp;</b>
+                                 <input id="account_contact_lastname" name="account[contact_lastname]" size="30" type="text" />
                             </li>
                             <li>
-                                <label for="message">Your Message</label>
-                                <textarea id="message" name="message" rows="5" cols="60"></textarea>
-                            </li>
-                            <li>                            
-                                <input type="submit" class="submit" value="SEND YOUR QUESTION" />
+                                <b>Your Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                <input id="account_contact_email" name="account[contact_email]" size="30" type="text" /> 
+                            
+                            <p>&nbsp;</p>
+                            <li>
+                                <input type="submit" class="submit" value="Submit" />
                             </li>
                         </ul>
                     </form>
-                
-                </div>
                                 
             </div>
             <div class="content-btm"></div>
@@ -143,9 +122,9 @@
             <div class="copy">
                 <p>Copyright &copy; 2010 ClearSignal Software. All rights reserved. </p>
             </div>
-            <div class="twitter">
+            <!--<div class="twitter">
                 <a href="#"><img src="images/bg_twitter.png" alt="Follow us on Twitter" /></a>
-            </div>
+            </div> -->
 
         </div>
         <!-- // footer -->
