@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  skip_before_filter :create
   
   
   # GET /accounts
