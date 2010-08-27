@@ -23,7 +23,7 @@
 
   <p>
     <%= f.label :service_id %><br />
-    <%= f.collection_select :service_id, Service.all, :id, :name, :prompt => true  %>
+    <%= f.collection_select :service_id, Service.find_all_by_dashboard_id(session[:dashboard_id]), :id, :name, :prompt => true  %>
   </p>
   <p>
     <%= f.label :timestamp %><br />

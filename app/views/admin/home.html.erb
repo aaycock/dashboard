@@ -39,61 +39,69 @@
       <div class="wrapper">
         <!-- Left column/section -->
         <section class="column width6 first">
-
-          <p>
-            <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
-          </p>
-
-          <% url = "http://statusdashboard.com/admin/dashboard/" + session[:account_id].to_s  %>
-          <h3>External URL: <a target="_blank" href="<%= url %>"><%= url %></a></h3>
-
-          <% if flash[:notice] -%>
-
-            <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
-
+          <% if @services.length > 0 %>
+            <p>
+              <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
+            </p>
           <% end %>
-          <div id="table">
-            <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
-              <thead>
-                <tr>
-                  <th>Service</th>
-                  <% @days.each do |day| %>
-                    <% if day.strftime('%m/%d/%Y') == Time.now.strftime('%m/%d/%Y') %>
-                      <th>Today</th>
-                    <% else %>
-                      <th><%= day.strftime('%m/%d/%Y') %></th>
-                    <% end %>
-                  <% end %>
-                </tr>
-              </thead>
-              <tbody>
-                <% @services.each do |service| %>
 
+          <% url = "http://statusdashboard.com/admin/dashboard/" + session[:dashboard_id].to_s  %>
+          <h3><%= @dashboard.name %></h3>
+
+          <% if @services.length > 0 %>
+            <h3>External URL: <a target="_blank" href="<%= url %>"><%= url %></a></h3>
+
+            <% if flash[:notice] -%>
+
+              <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+
+            <% end %>
+
+
+            <div id="table">
+              <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+                <thead>
                   <tr>
-                    <td ><b><%= service.name %></b></td>
-
+                    <th>Service</th>
                     <% @days.each do |day| %>
-                      <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
-                      <%  if e %>
-                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>&admin=true"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                      <% if day.strftime('%m/%d/%Y') == Time.now.strftime('%m/%d/%Y') %>
+                        <th>Today</th>
                       <% else %>
-                        <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                        <th><%= day.strftime('%m/%d/%Y') %></th>
                       <% end %>
                     <% end %>
-
                   </tr>
-                <% end %>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="4"></td>
-                  <td align="center" ><% if @offset > 4 %><a href="/admin/home?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
-                  <td align="center"><a href="/admin/home?offset=<%= @offset+5 %> ">Older ></a></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  <% @services.each do |service| %>
 
+                    <tr>
+                      <td ><b><%= service.name %></b></td>
+
+                      <% @days.each do |day| %>
+                        <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
+                        <%  if e %>
+                          <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>&admin=true"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                        <% else %>
+                          <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                        <% end %>
+                      <% end %>
+
+                    </tr>
+                  <% end %>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="4"></td>
+                    <td align="center" ><% if @offset > 4 %><a href="/admin/home?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
+                    <td align="center"><a href="/admin/home?offset=<%= @offset+5 %> ">Older ></a></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          <% else %>
+            No services, please click here to add: <%= link_to 'Add Service', :controller => :services, :action => :new %>
+          <% end %>
           <p>
           <div class="content-box corners">
             <header>
@@ -109,7 +117,7 @@
                   <td width="20%"><img src="/img/table/4.png"/>&nbsp; Outage</td>
                 </tr>
               </table>
-              
+
 
 
             </section>

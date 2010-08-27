@@ -11,10 +11,6 @@
     Version:1.0
     Date:October 13th, 2009 
  
-    This file is part of a site template for sale at ThemeForest.net.
-    See: http://themeforest.net/user/simonbouchard/portfolio
-    Copyright �2009 Simon Bouchard <info@simonbouchard.com>
- 
 -------------------------------------------------------------   */
 
 /*  -------------------------------------------------------------
@@ -331,6 +327,7 @@ div.col2 .testimonial p {
 .header .top-nav {
     width: 999px;
     height: 79px; }
+
 
 .header h1 {
     position:relative;

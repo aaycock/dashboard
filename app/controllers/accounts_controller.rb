@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
-
+  
+  
   # GET /accounts
   # GET /accounts.xml
   def index
@@ -48,8 +48,29 @@ class AccountsController < ApplicationController
     @account = Account.new(params[:account])
 
     respond_to do |format|
+
+
       if @account.save
+
+        # create initial dashboard
+        dashboard = Dashboard.new
+        dashboard.name = @account.name + " Dashboard"
+        dashboard.account_id = @account.id
+        dashboard.save
+
+        #send welcome mail to user
+        @user = User.new
+        @user.account_id = @account.id
+        @user.first_name = @account.contact_firstname
+        @user.last_name = @account.contact_lastname
+        @user.email = @account.contact_email
+        logger.debug "Creating user #{@user.email}"
+        new_password = @user.set_random_password
+        #new_password = user.set_random_password
+        #Emailer.deliver_welcome_email(user, new_password)
+        @user.save
         format.html { redirect_to("/success.html", :notice => 'Account was successfully created.') }
+        #Send welcome mail
         format.xml  { render :xml => @account, :status => :created, :location => @account }
       else
         format.html { render :action => "new" }

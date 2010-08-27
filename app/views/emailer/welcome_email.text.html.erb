@@ -6,8 +6,10 @@
   <body>
     <h1>Welcome to StatusDashboard.com, <%=h @user.first_name %></h1>
     <p>
-      You have successfully signed up to statusdashboard.com, and your username is: <%= @user.email %>.<br/>
-      To login to the site, just follow this link: <%=h @url %>.
+      You have successfully signed up to statusdashboard.com.<br/>
+      Your username is: <b><%= @user.email %></b>.<br/>
+      Your temporary password is <b><%= @pass %></b><br/>
+      To login to the site and change it to something memorable, just follow this link: <%=h @url %>.
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

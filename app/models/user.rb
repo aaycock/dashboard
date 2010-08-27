@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid address"
 
   attr_accessor :password_confirmation
-  validates_confirmation_of :password
+  #validates_confirmation_of :password
 
-  validate :password_non_blank
+  #validate :password_non_blank
 
   def self.authenticate(email, password)
     user = self.find_by_email(email) # TODO: not sure about this method
@@ -37,10 +37,15 @@ class User < ActiveRecord::Base
   end
 
   def send_new_password
+    new_pass = set_random_password
+    Emailer.deliver_forgot_password(self.email, self.email, new_pass)
+  end
+
+  def set_random_password
     new_pass = User.random_string(10)
     self.password = self.password_confirmation = new_pass
     self.save
-    Emailer.deliver_forgot_password(self.email, self.email, new_pass)
+    new_pass
   end
 
   private

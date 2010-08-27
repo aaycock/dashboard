@@ -45,8 +45,11 @@ class ServicesController < ApplicationController
   # POST /services.xml
   def create
     #logger.debug "account_id: #{params[:account_id]}"
-   @account = Account.find(session[:account_id]) # TODO Replace with real account_id from session
-   @service = @account.services.create!(params[:service])
+   @account = Account.find(session[:account_id])
+   @service = @account.services.create(params[:service])
+   @service.dashboard_id = session[:dashboard_id] 
+   @service.save
+
    respond_to do |format|
      format.html { redirect_to("/services", :notice => 'Service was successfully created.')}
      format.js

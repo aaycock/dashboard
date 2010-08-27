@@ -26,7 +26,7 @@
         <!-- Left column/section -->
         <section class="column width6 first">
 
-          <h3>TRX Internal Dashboard</h3>
+          <h3><%= @dashboard.name %> </h3>
 
           <% if flash[:notice] -%>
 
@@ -68,8 +68,8 @@
               <tfoot>
                 <tr>
                   <td colspan="4"></td>
-                  <td align="center" ><% if @offset > 4 %><a href="/admin/dashboard/<%= session[:account_id] %>?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
-                  <td align="center"><a href="/admin/dashboard/<%= session[:account_id] %>?offset=<%= @offset+5 %> ">Older ></a></td>
+                  <td align="center" ><% if @offset > 4 %><a href="/admin/dashboard/<%= params[:id] %>?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
+                  <td align="center"><a href="/admin/dashboard/<%= params[:id] %>?offset=<%= @offset+5 %> ">Older ></a></td>
                 </tr>
               </tfoot>
             </table>

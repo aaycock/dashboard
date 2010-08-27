@@ -11,7 +11,9 @@ class AdminController < ApplicationController
     end
     user = User.find(user_id)
     account_id = Account.find(user.account_id)
-    @services = Service.find_all_by_account_id(account_id)
+    @dashboard = Dashboard.find_by_account_id(account_id)
+    #  @dashboard = dashboards[0] Add back when we handle multiple dashboards
+    @services = Service.find_all_by_dashboard_id(session[:dashboard_id])
 
     time = Time.now-@offset.days
     @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
@@ -42,13 +44,15 @@ class AdminController < ApplicationController
   # GET /dashboard/1.xml
   def dashboard
     @edit=false
-    account_id = params[:id]
-    
-    @services = Service.find_all_by_account_id(account_id)
+    dashboard_id = params[:id]
     @offset = params[:offset].to_i
     if @offset.nil?
       @offset = 0
     end
+
+    @dashboard = Dashboard.find(dashboard_id)
+    @services = Service.find_all_by_dashboard_id(dashboard_id)
+
     time = Time.now-@offset.days
     @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
 
@@ -88,6 +92,7 @@ class AdminController < ApplicationController
         session[:account_id] = user.account_id
         session[:user_first_name] = user.first_name
         session[:user_last_name] = user.last_name
+        session[:dashboard_id] = Dashboard.find_by_account_id(user.account_id).id
         uri = session[:original_uri]
         session[:original_uri] = nil
         redirect_to(uri || { :action => "home"})

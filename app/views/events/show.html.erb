@@ -15,7 +15,7 @@
         <% @events.each do |event| %>
           <table>
             <tr><th rowspan="3" valign="center"><img src="/img/table/<%= event.level %>.png"/> &nbsp;&nbsp;</th>
-              <td><strong>Time: </strong><%=  event.timestamp %> <%if @edit %> [<a href="/events/<%= event.id%>/edit">edit</a>]<% end %> </tr>
+              <td><strong>Time: </strong><%=  event.timestamp %> <%if @edit %>   [<a href="/events/<%= event.id%>/edit">Edit</a>] &nbsp; [<%= link_to 'Delete', event, :confirm => 'Are you sure?', :method => :delete %>]<% end %> </tr>
             <td><strong>Level: </strong><%= Event::LEVELS[event.level][0] %></td>
             <tr><td><strong>Message: </strong><%= event.message %></td></tr>
           </table>
