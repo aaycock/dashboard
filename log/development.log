@@ -46776,3 +46776,19 @@ ActionController::RoutingError (No route matches "/assets/fonts/DroidSans-Bold.t
   
 
 Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-27 03:25:18) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-27 03:25:34) [GET]
+
+ActionController::RoutingError (No route matches "/assets/lightbox/js/jquery.lightbox-0.5.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)

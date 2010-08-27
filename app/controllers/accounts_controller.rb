@@ -1,6 +1,4 @@
-class AccountsController < ApplicationController
-  skip_before_filter :create
-  
+class AccountsController < ApplicationController  
   
   # GET /accounts
   # GET /accounts.xml
