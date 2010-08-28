@@ -181,7 +181,7 @@ h3.topfeatures {
     padding:0 0 15px 40px;
     height: 32px;
     line-height: 32px;
-    background: transparent url("../../images/lightbulb_32.png") no-repeat 0 0; }
+    background: transparent no-repeat 0 0; }
 
 h3.testimonials {
     padding:0 0 15px 45px;

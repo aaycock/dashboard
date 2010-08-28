@@ -5,9 +5,20 @@
               <h3>Your Account</h3>
             </header>
             <dl class="first">
+              <dt></dt>
+              <% @user_count = User.count(:conditions => "account_id="+session[:account_id].to_s) %>
+              <dd><b><%= pluralize(@user_count, 'user') %></b></dd>
+              <dd class="last">Want to upgrade your account?</dd>
+              <% @dashboard_count = Dashboard.count(:conditions => "account_id="+session[:account_id].to_s) %>
+              <dt></dt>
+              <dd><b> <%= pluralize(@dashboard_count, 'dashboard') %> </b></dd>
+              <dd class="last">Want to upgrade your account?</dd>
+
+<% if session[:user].role == "admin" %>
               <dt><img width="16" height="16" alt="" src="/img/key.png"></dt>
               <dd><a href="/admin/my_account">Plan details</a></dd>
               <dd class="last">Want to upgrade your account?</dd>
+              <% end %>
 
               <dt><img width="16" height="16" alt="" src="/img/help.png"></dt>
               <dd><a href="http://statusdashboard.zendesk.com/home">Support</a></dd>
@@ -29,3 +40,4 @@
           </div> -->
         </aside>
         <!-- End of Right column/section -->
+        <p>&nbsp;</p>

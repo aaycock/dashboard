@@ -1,0 +1,144 @@
+<% @page_name = 'Home' %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>StatusDashboard - Home</title>
+    <meta name="description" content="Administry - Admin Template by Zoran Juric" />
+    <meta name="keywords" content="Admin,Template" />
+
+    <%= render :partial => "/common/includes" %>
+
+    <script type="text/javascript">
+      $(function() {
+        // Load Facebox - simple add "rel="facebook" to any link to activate Modal Dialog
+        $('a[rel*=facebox]').facebox();
+
+      });
+    </script>
+
+
+  </head>
+  <body>
+
+    <%= render :partial => "/common/header" %>
+
+    <!-- Page title -->
+    <div id="pagetitle">
+      <div class="wrapper">
+        <h1>Dashboard &rarr; <span>Home</span></h1>
+        <!-- Quick search box -->
+        <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+      </div>
+    </div>
+    <!-- End of Page title -->
+
+    <!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
+          <% if @services.length > 0 %>
+            <p>
+              <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
+            </p>
+          <% end %>
+
+          <% url = "http://statusdashboard.com/dashboard/" + session[:account].name.gsub(" ","") + "/" + session[:dashboard_id].to_s  %>
+          <h3><%= @dashboard.name %></h3>
+
+          <% if @services.length > 0 %>
+            <h3>External URL: <a target="_blank" href="<%= url %>"><%= url %></a></h3>
+
+            <% if flash[:notice] -%>
+
+              <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+
+            <% end %>
+
+
+            <div id="table">
+              <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <% @days.each do |day| %>
+                      <% if day.strftime('%m/%d/%Y') == Time.now.strftime('%m/%d/%Y') %>
+                        <th>Today</th>
+                      <% else %>
+                        <th><%= day.strftime('%m/%d/%Y') %></th>
+                      <% end %>
+                    <% end %>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @services.each do |service| %>
+
+                    <tr>
+                      <td ><b><%= service.name %></b></td>
+
+                      <% @days.each do |day| %>
+                        <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
+                        <%  if e %>
+                          <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>&admin=true"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                        <% else %>
+                          <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                        <% end %>
+                      <% end %>
+
+                    </tr>
+                  <% end %>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="4"></td>
+                    <td align="center" ><% if @offset > 4 %><a href="/home?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
+                    <td align="center"><a href="/home?offset=<%= @offset+5 %> ">Older ></a></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <p>
+            <div class="content-box corners">
+              <header>
+                <h3>Status Types</h3>
+              </header>
+              <section>
+                <table  >
+                  <tr>
+                    <td width="15%"><img src="/img/table/0.png"/>&nbsp; No Issues</td>
+                    <td width="17%"><img src="/img/table/1.png"/>&nbsp; Info Available</td>
+                    <td width="24%"><img src="/img/table/2.png"/>&nbsp; Planned Maintenance</td>
+                    <td width="17%"><img src="/img/table/3.png"/>&nbsp; Degradation</td>
+                    <td width="20%"><img src="/img/table/4.png"/>&nbsp; Outage</td>
+                  </tr>
+                </table>
+
+              <% else %>
+                <p><div class="box box-info"><b><%= link_to 'Create Your First Service', :controller => :services, :action => :new %></b><br/>It takes just a few seconds and you'll be up and running.</div></p>
+                <% end %>
+
+            </section>
+          </div>
+          </p>
+          <p>&nbsp;</p>
+
+
+
+        </section>
+        <!-- End of Left column/section -->
+
+        <%= render :partial => "/common/right_column"  %>
+
+      </div>
+      <!-- End of Wrapper -->
+    </div>
+    <!-- End of Page content -->
+
+    <%= render :partial => "/common/footer"  %>
+
+
+  </body>
+</html>

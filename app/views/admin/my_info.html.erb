@@ -1,0 +1,92 @@
+<% @page_name = 'Admin' %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Meta -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!-- End of Meta -->
+
+    <!-- Page title -->
+    <title>Your User Settings</title>
+    <!-- End of Page title -->
+
+    <%= render :partial => "/common/includes"  %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        /* setup navigation, content boxes, etc... */
+        Administry.setup();
+      });
+    </script>
+
+  </head>
+  <body>
+
+    <%= render :partial => "/common/header"  %>
+
+    <!-- Page title -->
+    <div id="pagetitle">
+      <div class="wrapper">
+        <h1>Your User Info</h1>
+        <!-- Quick search box -->
+       <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+      </div>
+    </div>
+    <!-- End of Page title -->
+
+    <!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
+
+          <h3> </h3>
+          <% if flash[:success] -%>
+          <div class="box box-success"><%= flash[:success] %></div>
+          <% end %>
+          <% if flash[:error] -%>
+          <div class="box box-error"><%= flash[:error] %></div>
+          <% end %>
+
+          <% form_for(@user) do |f| %>
+            <%= f.error_messages %>
+
+            <p>
+              <%= f.label :first_name %><br />
+              <%= f.text_field :first_name %>
+            </p>
+            <p>
+              <%= f.label :last_name %><br />
+              <%= f.text_field :last_name %>
+            </p>
+            <p>
+              <%= f.label :email %><br />
+              <%= f.text_field :email %>
+            </p>
+
+        <p>
+          <%= f.submit 'Update', :class => "btn" %>
+          <input class="btn" id="resetButton" type="button" value='Reset Password' onclick="location.href='/admin/reset_password'" />
+          or <a href="#" onclick="history.back(); return false;">Cancel</a>
+        </p>
+      <% end %>
+
+      <p>&nbsp;</p>
+
+
+
+    </section>
+    <!-- End of Left column/section -->
+
+    <%= render :partial => "/common/right_column"  %>
+
+  </div>
+  <!-- End of Wrapper -->
+  </div>
+  <!-- End of Page content -->
+
+  <%= render :partial => "/common/footer"  %>
+
+
+  </body>
+  </html>

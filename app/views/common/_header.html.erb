@@ -2,12 +2,12 @@
 <header id="top">
   <div class="wrapper">
     <!-- Title/Logo - can use text instead of image -->
-    <div id="title"><a href="/admin/home"><img src="/img/dashboard-logo.png" alt="Administry" /></a><!--<span>Administry</span> demo--></div>
+    <div id="title"><a href="/home"><img src="/img/dashboard-logo.png" alt="Administry" /></a><!--<span>Administry</span> demo--></div>
     <!-- Top navigation -->
     <div id="topnav">
       <a href="#"></a>
-				Logged in as <b><%= session[:user_first_name] %> <%= session[:user_last_name] %> </b>
-      <span>|</span> <a href="/admin/my_account">Account</a>
+				Logged in as <b><%= session[:user].first_name %> <%= session[:user].last_name %> </b>
+      <span>|</span> <a href="/admin/my_info">My Info</a>
       <span>|</span> <a href="/admin/logout">Logout</a><br />
       <!-- <small>You have <a href="#" class="high"><b>1</b> new message!</a></small> TODO add message support -->
     </div>
@@ -15,7 +15,7 @@
     <!-- Main navigation -->
     <nav id="menu">
       <ul class="sf-menu">
-        <li <% if @page_name=="Home" %>class="current"<% end %>><a href="/admin/home">Dashboard</a></li>
+        <li <% if @page_name=="Home" %>class="current"<% end %>><a href="/home">Dashboard</a></li>
         
         <li <% if @page_name=="Admin" %>class="current"<% end %>><a href="#">Admin</a>
           <ul>

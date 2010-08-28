@@ -1,0 +1,114 @@
+<% @page_name = 'Home' %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>StatusDashboard - Home</title>
+    <meta name="description" content="Administry - Admin Template by Zoran Juric" />
+    <meta name="keywords" content="Admin,Template" />
+
+    <%= render :partial => "/common/includes" %>
+
+    <script type="text/javascript">
+      $(function() {
+        // Load Facebox - simple add "rel="facebook" to any link to activate Modal Dialog
+        $('a[rel*=facebox]').facebox();
+
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Page content -->
+    <div id="page">
+      <!-- Wrapper -->
+      <div class="wrapper">
+        <!-- Left column/section -->
+        <section class="column width6 first">
+
+          <h3><%= @dashboard.name %> </h3>
+
+          <% if flash[:notice] -%>
+
+            <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+
+          <% end %>
+          <div id="table">
+            <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <% @days.each do |day| %>
+                    <% if day.strftime('%m/%d/%Y') == Time.now.strftime('%m/%d/%Y') %>
+                      <th>Today</th>
+                    <% else %>
+                      <th><%= day.strftime('%m/%d/%Y') %></th>
+                    <% end %>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+
+                <% @services.each do |service| %>
+                  <tr>
+                    <td ><b><%= service.name %></b></td>
+
+                    <% @days.each do |day| %>
+                      <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
+                      <%  if e %>
+                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                      <% else %>
+                        <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                      <% end %>
+                    <% end %>
+
+                  </tr>
+                <% end %>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4"></td>
+                  <td align="center" ><% if @offset > 4 %><a href="/dashboard/<%= params[:name].gsub(" ","") + "/" + params[:id] %>?offset=<%= @offset-5 %> ">< Newer</a><%end%></td>
+                  <td align="center"><a href="/dashboard/<%= params[:name].gsub(" ","") + "/" + params[:id] %>?offset=<%= @offset+5 %> ">Older ></a></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <p>
+          <div class="content-box corners">
+            <header>
+              <h3>Status Types</h3>
+            </header>
+            <section>
+              <table  >
+                <tr>
+                  <td width="15%"><img src="/img/table/0.png"/>&nbsp; No Issues</td>
+                  <td width="17%"><img src="/img/table/1.png"/>&nbsp; Info Available</td>
+                  <td width="24%"><img src="/img/table/2.png"/>&nbsp; Planned Maintenance</td>
+                  <td width="17%"><img src="/img/table/3.png"/>&nbsp; Degradation</td>
+                  <td width="20%"><img src="/img/table/4.png"/>&nbsp; Outage</td>
+                </tr>
+              </table>
+            </section>
+          </div>
+          </p>
+          <p>&nbsp;</p>
+
+
+
+        </section>
+        <!-- End of Left column/section -->
+
+
+
+      </div>
+      <!-- End of Wrapper -->
+    </div>
+    <!-- End of Page content -->
+
+
+
+
+  </body>
+</html>

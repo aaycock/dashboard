@@ -48,25 +48,35 @@
           <div class="box box-error"><%= flash[:error] %></div>
           <% end %>
 
-          <% form_for(@user) do |f| %>
-            <%= f.error_messages %>
+         <% form_for(@account) do |f| %>
+  <%= f.error_messages %>
 
-            <p>
-              <%= f.label :first_name %><br />
-              <%= f.text_field :first_name %>
-            </p>
-            <p>
-              <%= f.label :last_name %><br />
-              <%= f.text_field :last_name %>
-            </p>
-            <p>
-              <%= f.label :email %><br />
-              <%= f.text_field :email %>
-            </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :contact_firstname %><br />
+    <%= f.text_field :contact_firstname %>
+  </p>
+  <p>
+    <%= f.label :contact_lastname %><br />
+    <%= f.text_field :contact_lastname %>
+  </p>
+  <p>
+    <%= f.label :contact_email %><br />
+    <%= f.text_field :contact_email %>
+  </p>
+  
+  <p>
+    <%= f.label :plan %><br />
+    <%= f.select :plan, @products.map { |p| [p.name, p.handle]}, :prompt => "Select a plan"  %>
+  </p>
 
-        <p>
+  <p>
+  
           <%= f.submit 'Update', :class => "btn" %>
-          <input class="btn" id="resetButton" type="button" value='Reset Password' onclick="location.href='/admin/reset_password'" />
+          
           or <a href="#" onclick="history.back(); return false;">Cancel</a>
         </p>
       <% end %>
