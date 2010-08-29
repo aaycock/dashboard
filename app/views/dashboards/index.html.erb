@@ -1,24 +1,64 @@
-<h1>Listing dashboards</h1>
+<!-- Page title -->
+<div id="pagetitle">
+  <div class="wrapper">
+    <h1>Dashboard &rarr; <span>List</span></h1>
+    <!-- Quick search box -->
+    <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
+  </div>
+</div>
+<!-- End of Page title -->
 
-<table>
-  <tr>
-    <th>Account</th>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+<!-- Page content -->
+<div id="page">
+  <!-- Wrapper -->
+  <div class="wrapper">
+    <!-- Left column/section -->
+    <section class="column width6 first">
 
-<% @dashboards.each do |dashboard| %>
-  <tr>
-    <td><%=h dashboard.account_id %></td>
-    <td><%=h dashboard.name %></td>
-    <td><%=h dashboard.description %></td>
-    <td><%= link_to 'Show', dashboard %></td>
-    <td><%= link_to 'Edit', edit_dashboard_path(dashboard) %></td>
-    <td><%= link_to 'Destroy', dashboard, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+      <h3>Dashboards</h3>
 
-<br />
+      <% if flash[:notice] -%>
+        <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+        <% flash[:notice] = nil %>
+      <% end %>
+     <% if flash[:warning] -%>
+        <p><div class="box box-error closeable"><%= flash[:warning] %></div></p>
+        <% flash[:warning] = nil %>
+      <% end %>
 
-<%= link_to 'New dashboard', new_dashboard_path %>
+
+      <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Dashboard Name</th>
+            <th>Description</th>
+            <th>Services</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dashboards.each do |dashboard| %>
+            <tr>
+              <td><%=h dashboard.name %></td>
+              <td><%=h dashboard.description %></td>
+              <td><%=h dashboard.services.length.to_s %></td>
+              <td><%= link_to 'Edit', edit_dashboard_path(dashboard) %></td>
+              <td><%= link_to 'Delete', dashboard, :confirm => 'Are you sure?', :method => :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <%= button_to 'New dashboard', new_dashboard_path, :class => "btn" %>
+
+    <p>&nbsp;</p>
+
+    </section>
+    <!-- End of Left column/section -->
+
+    <%= render :partial => "/common/right_column"  %>
+
+  </div>
+  <!-- End of Wrapper -->
+</div>
+<!-- End of Page content -->

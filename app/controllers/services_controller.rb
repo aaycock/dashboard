@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
     user_id = session[:user_id]
     user = User.find(user_id)
     account_id = Account.find(user.account_id)
-    @services = Service.find_all_by_account_id(account_id)
+    @services = Service.find_all_by_dashboard_id(session[:dashboard_id])
     
 
     respond_to do |format|

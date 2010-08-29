@@ -80,6 +80,12 @@
           or <a href="#" onclick="history.back(); return false;">Cancel</a>
         </p>
       <% end %>
+        <hr>
+        <p>
+        Need to Cancel Your Account?
+        We'll be sorry to see you go. Once your account is cancelled, all your project information will be immediately and permanently deleted. If you have a paying account you won't be charged again after your official cancellation date. Please familiarize yourself with our <a href="/refund.html">refund</a> policy.
+        <%= link_to 'Please cancel my account', "/admin/cancel", :confirm => 'Are you sure?', :method => :cancel %>
+        </p>
 
       <p>&nbsp;</p>
 

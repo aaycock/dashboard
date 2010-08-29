@@ -63,6 +63,7 @@ class AccountsController < ApplicationController
         @user.first_name = @account.contact_firstname
         @user.last_name = @account.contact_lastname
         @user.email = @account.contact_email
+        @user.role = "admin"
         logger.debug "Creating user #{@user.email}"
         new_password = @user.set_random_password
         #new_password = user.set_random_password

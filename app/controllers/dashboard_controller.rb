@@ -9,9 +9,12 @@ class DashboardController < ApplicationController
     if @offset.nil?
       @offset = 0
     end
-    user = User.find(user_id)
-    account = Account.find(user.account_id)
-    @dashboard = Dashboard.find_by_account_id(account.id)
+    if params[:di]
+      session[:dashboard_id] = params[:di]
+    end
+    #user = User.find(user_id)
+    #account = Account.find(user.account_id)
+    @dashboard = Dashboard.find(session[:dashboard_id])
     #  @dashboard = dashboards[0] Add back when we handle multiple dashboards
     @services = Service.find_all_by_dashboard_id(session[:dashboard_id])
 

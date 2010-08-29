@@ -1,17 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<% @page_name = 'Admin' %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Meta -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!-- End of Meta -->
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Dashboards: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-</head>
-<body>
+    <!-- Page title -->
+     <title>Dashboards: <%= controller.action_name %></title>
+    <!-- End of Page title -->
 
-<p style="color: green"><%= notice %></p>
+    <%= render :partial => "/common/includes"  %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        /* setup navigation, content boxes, etc... */
+        Administry.setup();
+      });
+    </script>
 
-<%= yield %>
+  </head>
+  <body>
 
-</body>
-</html>
+    <%= render :partial => "/common/header"  %>
+
+    <%= yield %>
+
+    <!-- Right Column include here -->
+
+  <%= render :partial => "/common/footer"  %>
+
+
+  </body>
+  </html>

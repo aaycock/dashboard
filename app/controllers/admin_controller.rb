@@ -73,6 +73,20 @@ class AdminController < ApplicationController
     end
   end
 
+  def cancel
+    account = session[:account]
+    subscription = Chargify::Subscription.find(account.subscription_id)
+    subscription.cancel
+    account.services.destroy
+    account.dashboards.destroy
+    account.users.destroy
+    account.destroy
+    logout
+  end
+
+
+
+
     def index
     end
 

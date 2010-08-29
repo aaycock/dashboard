@@ -2,6 +2,7 @@ class Account < ActiveRecord::Base
   #validates_presence_of :name, :contact_email
   has_many :services
   has_many :users
+  has_many :dashboards
 
   # Create a new customer
   def create_chargify_customer

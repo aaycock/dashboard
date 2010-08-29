@@ -1,0 +1,169 @@
+/*  -------------------------------------------------------------
+    BLUE SCHEME
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+body {
+    background: #fefefe url("../../images/bg_body.png") no-repeat top center; }
+
+/*  -------------------------------------------------------------
+    LINKS
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+a {
+    color:#1c6997; }
+
+a.signupnowsmall {
+    color:#fff;
+    text-shadow: 1px 1px 0 #144866;
+    background: #77b4d7 url("../../images/bg_button_light.png") repeat-x bottom center;
+    border:1px solid #4e99c4;}
+
+a.signupnowsmall:hover {
+    background: #77b4d7 url("../../images/bg_button.png") repeat-x bottom center; }
+
+/*  -------------------------------------------------------------
+    GRID
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+.container {
+    background: transparent url("../../images/bg_container.gif") repeat-x top left; }
+
+
+.content-top {
+    background: transparent url("../../images/content_top.png") no-repeat top left; }
+
+.content {
+    background: transparent url("../../images/content_bg.png") repeat-y left bottom; }
+
+.content-btm {
+    background: transparent url("../../images/content_btm.png") no-repeat top left; }
+
+/*  -------------------------------------------------------------
+    MISC (NEED A CLEANUP!)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+div.block p.meta span {
+    color:#1c6997; }
+
+/*  -------------------------------------------------------------
+    INTERFACE
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+.header h1 {
+    position:relative;
+    top:27px;
+    margin:0;
+    padding:0;
+    /*width: 102px;
+    height: 24px; */
+    text-indent: -9999px;
+    background:transparent url("../../img/dashboard-logo.png") no-repeat top left; }
+
+/* SHOWCASE */
+.showcase {
+    background: transparent url("../../images/bg_showcase.png") no-repeat top center; }
+
+.showcase h2, .showcase p {
+    color:#fff;
+    text-shadow: 0 1px 0 #323231; }
+
+.showcase #slider a {
+    color:#fff;
+    border:1px solid #1c6997;
+    text-shadow: 1px 1px 0 #082848;
+    background: #1c6997 url("../../images/bg_button.png") repeat-x bottom center; }
+
+    .showcase #slider p a:hover {
+        background: #4aa3d7 url("../../images/bg_button.png") repeat-x bottom center; }
+
+/* PAGE TITLE */
+.page-title {
+    background: transparent url("../../images/bg_showcase.png") no-repeat top center; }
+
+.page-title h2 {
+    color:#fff;
+    text-shadow: 0 1px 0 #323231; }
+
+    .page-title ul.nav li a {
+        color:#fff;
+        letter-spacing:-0.7px;
+        text-shadow: 0 1px 0 #323231; }
+
+        .page-title ul.nav li a:hover, .page-title ul.nav li.current_page_item a {
+            color:#a9eaff;}
+
+
+/*  -------------------------------------------------------------
+    TABLES (PRICING)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+table#plans thead th em.tagline {
+    color: #35759e; }
+
+table#plans thead th h5 {
+    color: #1c6997; }
+
+table#plans td.most_popular a.signupnowsmall {
+    border:1px solid #1c6997;
+    text-shadow: 1px 1px 0 #082848;
+    background: #1c6997 url("../../images/bg_button.png") repeat-x bottom center; }
+
+    table#plans td.most_popular a.signupnowsmall:hover {
+        background: #4aa3d7 url("../../images/bg_button.png") repeat-x bottom center; }
+
+/*  -------------------------------------------------------------
+    BLOG
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+p.articlemeta span {
+    color:#000; }
+
+.post .comments {
+    background: transparent url("../../images/icon_comment.png") no-repeat 0 0; }
+
+li.rss {
+    background: url("../../images/icon_rrssubscribe.png") no-repeat 0 2px; }
+
+.commentlist li.bypostauthor cite a {
+    color:#1c6997; }
+
+#commentform #submit {
+    color:#fff;
+    border:1px solid #1c6997;
+    text-shadow: 1px 1px 0 #082848;
+    background: #1c6997 url("../../images/bg_button.png") repeat-x bottom center; }
+
+#commentform #submit:hover {
+    background: #4aa3d7 url("../../images/bg_button.png") repeat-x bottom center; }
+
+#infos {
+    background: #fff url("../../images/bg_info.png") repeat-x bottom center; }
+
+#infos #rss a {
+    background:transparent url("../../images/icon_rrssubscribe.png") no-repeat 0 2px; }
+
+/*  -------------------------------------------------------------
+    FORM
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+form input.submit {
+    color:#fff;
+    border:1px solid #1c6997;
+    text-shadow: 1px 1px 0 #082848;
+    background: #1c6997 url("../../images/bg_button.png") repeat-x bottom center; }
+
+    form input.submit:hover {
+        background: #4aa3d7 url("../../images/bg_button.png") repeat-x bottom center; }
+
+/*  -------------------------------------------------------------
+    FOOTER
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
+
+.footer a.twitter {
+    font-size:11px;
+    height:32px;
+    line-height:32px;
+    display:block;
+    padding-right:45px;
+    border:none;
+    background:transparent url("../../images/twitter.png") no-repeat top right; }

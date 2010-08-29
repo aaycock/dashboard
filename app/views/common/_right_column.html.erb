@@ -5,22 +5,22 @@
               <h3>Your Account</h3>
             </header>
             <dl class="first">
-              <dt></dt>
+              <dt><img  alt="" src="/img/right_column/user_accept.png">   </dt>
               <% @user_count = User.count(:conditions => "account_id="+session[:account_id].to_s) %>
-              <dd><b><%= pluralize(@user_count, 'user') %></b></dd>
-              <dd class="last">Want to upgrade your account?</dd>
+              <dd><h4>&nbsp;&nbsp;&nbsp;<%= pluralize(@user_count, 'user') %></h4> </dd>
+              <dd class="last"><a href="/users/new">+ Add user</a></dd>
               <% @dashboard_count = Dashboard.count(:conditions => "account_id="+session[:account_id].to_s) %>
-              <dt></dt>
-              <dd><h4> <%= pluralize(@dashboard_count, 'dashboard') %> </h4></dd>
-              <dd class="last"></dd>
-
+              <dt><img  alt="" src="/img/right_column/accept.png"></dt>
+              <dd><h4>&nbsp;&nbsp;&nbsp;<%= pluralize(@dashboard_count, 'dashboard') %> </h4></dd>
+              <dd class="last"><a href="/dashboards/new">+ Add dashboard</a></dd>
+              <hr>
 <% if session[:user].role == "admin" %>
-              <dt><img width="16" height="16" alt="" src="/img/key.png"></dt>
+              <dt><img  alt="" src="/img/right_column/edit_page.png"></dt>
               <dd><a href="/admin/my_account">Plan details</a></dd>
               <dd class="last">Want to upgrade your account?</dd>
               <% end %>
 
-              <dt><img width="16" height="16" alt="" src="/img/help.png"></dt>
+              <dt><img  alt="" src="/img/right_column/help.png"></dt>
               <dd><a href="http://statusdashboard.zendesk.com/home">Support</a></dd>
               <dd class="last">User Forums and Support Requests</dd>
             </dl>

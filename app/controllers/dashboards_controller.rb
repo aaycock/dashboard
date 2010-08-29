@@ -2,7 +2,9 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.xml
   def index
-    @dashboards = Dashboard.all
+    @account = session[:account]
+    @dashboards = @account.dashboards.all
+    #@dashboards = Dashboard.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1
   # GET /dashboards/1.xml
   def show
-    @dashboard = Dashboard.find(params[:id])
+    @dashboard = session[:account].dashboards.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +36,7 @@ class DashboardsController < ApplicationController
 
   # GET /dashboards/1/edit
   def edit
-    @dashboard = Dashboard.find(params[:id])
+    @dashboard = session[:account].dashboards.find(params[:id])
   end
 
   # POST /dashboards
@@ -43,8 +45,9 @@ class DashboardsController < ApplicationController
     @dashboard = Dashboard.new(params[:dashboard])
 
     respond_to do |format|
+      @dashboard.account_id = session[:account].id
       if @dashboard.save
-        format.html { redirect_to(@dashboard, :notice => 'Dashboard was successfully created.') }
+        format.html { redirect_to("/dashboards", :notice => 'Dashboard was successfully created.') }
         format.xml  { render :xml => @dashboard, :status => :created, :location => @dashboard }
       else
         format.html { render :action => "new" }
@@ -56,7 +59,7 @@ class DashboardsController < ApplicationController
   # PUT /dashboards/1
   # PUT /dashboards/1.xml
   def update
-    @dashboard = Dashboard.find(params[:id])
+    @dashboard = session[:account].dashboards.find(params[:id])
 
     respond_to do |format|
       if @dashboard.update_attributes(params[:dashboard])
@@ -72,9 +75,14 @@ class DashboardsController < ApplicationController
   # DELETE /dashboards/1
   # DELETE /dashboards/1.xml
   def destroy
-    @dashboard = Dashboard.find(params[:id])
-    @dashboard.destroy
-
+    if params[:id] == session[:dashboard_id]
+      flash[:warning] = "Unable to remove active dashboard (try switching)"
+      redirect_to("/dashboards")
+      return
+    else
+      @dashboard = Dashboard.find(params[:id])
+      @dashboard.destroy
+    end
     respond_to do |format|
       format.html { redirect_to(dashboards_url) }
       format.xml  { head :ok }

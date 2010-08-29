@@ -50,7 +50,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :products, :only => [:index] do |products|
     products.resources :subscriptions, :only => [:new, :create]
   end
-
   map.connect 'dashboard/:name/:id', :controller => 'dashboard', :action => 'dashboard'
   map.connect 'home', :controller => 'dashboard', :action => 'home'
   map.connect ':controller/:action/:id'

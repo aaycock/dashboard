@@ -26,7 +26,11 @@
     <!-- Page title -->
     <div id="pagetitle">
       <div class="wrapper">
-        <h1>Dashboard &rarr; <span>Home</span></h1>
+        <% @dashboards = Dashboard.find_all_by_account_id(session[:account].id) %>
+        <h1>Dashboard: <%= Dashboard.find(session[:dashboard_id]).name %>
+          <% if @dashboards.length >1 %>
+            <%= select "selected_dashboard", session[:dashboard_id], @dashboards.map {|d| [d.name, d.id] }, { :prompt => "Select Dashboard"}, { :onchange => "location = '/home?di=' + this.options[this.selectedIndex].value;" } %></h1>
+        <% end %>
         <!-- Quick search box -->
         <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
       </div>
