@@ -11,8 +11,8 @@
               <dd class="last">Want to upgrade your account?</dd>
               <% @dashboard_count = Dashboard.count(:conditions => "account_id="+session[:account_id].to_s) %>
               <dt></dt>
-              <dd><b> <%= pluralize(@dashboard_count, 'dashboard') %> </b></dd>
-              <dd class="last">Want to upgrade your account?</dd>
+              <dd><h4> <%= pluralize(@dashboard_count, 'dashboard') %> </h4></dd>
+              <dd class="last"></dd>
 
 <% if session[:user].role == "admin" %>
               <dt><img width="16" height="16" alt="" src="/img/key.png"></dt>

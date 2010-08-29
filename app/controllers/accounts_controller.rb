@@ -68,8 +68,12 @@ class AccountsController < ApplicationController
         #new_password = user.set_random_password
         #Emailer.deliver_welcome_email(user, new_password)
         @user.save
+        #Setup Chargify Customer
+        customer_id = @account.create_chargify_customer
+        @account.create_chargify_subscription
+        logger.debug "new chargify customer id: #{customer_id}"
         format.html { redirect_to("/success.html", :notice => 'Account was successfully created.') }
-        #Send welcome mail
+        
         format.xml  { render :xml => @account, :status => :created, :location => @account }
       else
         format.html { render :action => "new" }

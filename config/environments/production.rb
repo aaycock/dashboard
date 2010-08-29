@@ -26,3 +26,6 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+SECURE_BASE_URL = 'https://secure.statusdashboard.com/'
+BASE_URL = 'http://statusdashboard.com'

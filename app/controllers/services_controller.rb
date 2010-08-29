@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+
   # GET /services
   # GET /services.xml
   def index
@@ -17,7 +18,8 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.xml
   def show
-    @service = Service.find(params[:id])
+    #@service = Service.find(params[:id])
+    @service = session[:account].services.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +40,8 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    @service = Service.find(params[:id])
+    #@service = Service.find(params[:id])
+    @service = session[:account].services.find(params[:id])
   end
 
   # POST /services
@@ -83,4 +86,5 @@ class ServicesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end
