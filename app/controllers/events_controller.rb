@@ -18,7 +18,9 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @edit = params[:admin]
-    @events = Event.find_by_sql ["select * from events where service_id = ? and  date(timestamp) = ? order by timestamp desc", params[:id], params[:date]]
+    if Account.find(session[:account_id]).services.find(params[:id])
+      @events = Event.find_by_sql ["select * from events where service_id = ? and  date(timestamp) = ? order by timestamp desc", params[:id], params[:date]]
+    end
     logger.debug "events: #{@events.length}"
     respond_to do |format|
       format.html # show.html.erb
@@ -39,13 +41,20 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+      @event = Event.find(params[:id])
+      if !Account.find(session[:account_id]).services.find(@event.service_id)
+        @event=nil
+      end
   end
 
   # POST /events
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    if !Account.find(session[:account_id]).services.find(@event.service_id)
+        @event=nil
+        return
+    end
 
     respond_to do |format|
       if @event.save
@@ -62,10 +71,13 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+    if !Account.find(session[:account_id]).services.find(@event.service_id)
+      return
+    end
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to("/admin/home", :notice => 'Event was successfully updated.') }
+        format.html { redirect_to("/home", :notice => 'Event was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -81,7 +93,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to("/admin/home") }
+      format.html { redirect_to("/home") }
       format.xml  { head :ok }
     end
   end
