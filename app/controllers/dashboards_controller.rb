@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.xml
   def index
-    @account = session[:account]
+    @account = Account.find(session[:account_id])
     @dashboards = @account.dashboards.all
     #@dashboards = Dashboard.all
 
@@ -15,7 +15,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1
   # GET /dashboards/1.xml
   def show
-    @dashboard = session[:account].dashboards.find(params[:id])
+    @dashboard = Account.find(session[:account_id]).dashboards.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class DashboardsController < ApplicationController
 
   # GET /dashboards/1/edit
   def edit
-    @dashboard = session[:account].dashboards.find(params[:id])
+    @dashboard = Account.find(session[:account_id]).dashboards.find(params[:id])
   end
 
   # POST /dashboards
@@ -45,7 +45,7 @@ class DashboardsController < ApplicationController
     @dashboard = Dashboard.new(params[:dashboard])
 
     respond_to do |format|
-      @dashboard.account_id = session[:account].id
+      @dashboard.account_id = session[:account_id]
       if @dashboard.save
         format.html { redirect_to("/dashboards", :notice => 'Dashboard was successfully created.') }
         format.xml  { render :xml => @dashboard, :status => :created, :location => @dashboard }
@@ -59,7 +59,7 @@ class DashboardsController < ApplicationController
   # PUT /dashboards/1
   # PUT /dashboards/1.xml
   def update
-    @dashboard = session[:account].dashboards.find(params[:id])
+    @dashboard = Account.find(session[:account_id]).dashboards.find(params[:id])
 
     respond_to do |format|
       if @dashboard.update_attributes(params[:dashboard])

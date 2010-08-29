@@ -4,12 +4,12 @@ class AdminController < ApplicationController
 
   # GET /admin/my_account
   def my_info
-    @user = User.find(session[:user].id)
+    @user = User.find(session[:user_id])
   end
 
   # GET /admin/my_account
   def my_account
-    @account = Account.find(session[:account].id)
+    @account = Account.find(session[:account_id])
     @products = Chargify::Product.find(:all)
   end
 
@@ -18,8 +18,8 @@ class AdminController < ApplicationController
     if request.post?
       user = User.authenticate(params[:email], params[:password])
       if user
-        session[:user] = user
-        session[:account] = Account.find(user.account_id)
+        #session[:user] = user
+        #session[:account] = Account.find(user.account_id)
         session[:user_id] = user.id
         session[:account_id] = user.account_id
         session[:user_first_name] = user.first_name
@@ -37,7 +37,7 @@ class AdminController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    session[:user] = nil
+    #session[:user] = nil
     redirect_to( :action => "login")
   end
 
@@ -74,7 +74,7 @@ class AdminController < ApplicationController
   end
 
   def cancel
-    account = session[:account]
+    account = Account.find(session[:account_id])
     subscription = Chargify::Subscription.find(account.subscription_id)
     subscription.cancel
     account.services.destroy

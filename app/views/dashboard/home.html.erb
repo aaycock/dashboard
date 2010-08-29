@@ -26,7 +26,7 @@
     <!-- Page title -->
     <div id="pagetitle">
       <div class="wrapper">
-        <% @dashboards = Dashboard.find_all_by_account_id(session[:account].id) %>
+        <% @dashboards = Dashboard.find_all_by_account_id(session[:account_id]) %>
         <h1>Dashboard: <%= Dashboard.find(session[:dashboard_id]).name %>
           <% if @dashboards.length >1 %>
             <%= select "selected_dashboard", session[:dashboard_id], @dashboards.map {|d| [d.name, d.id] }, { :prompt => "Select Dashboard"}, { :onchange => "location = '/home?di=' + this.options[this.selectedIndex].value;" } %></h1>
@@ -49,7 +49,7 @@
             </p>
           <% end %>
 
-          <% url = "http://statusdashboard.com/dashboard/" + session[:account].name.gsub(" ","") + "/" + session[:dashboard_id].to_s  %>
+          <% url = "http://statusdashboard.com/dashboard/" + Account.find(session[:account_id]).name.gsub(" ","") + "/" + session[:dashboard_id].to_s  %>
           <h3><%= @dashboard.name %></h3>
 
           <% if @services.length > 0 %>

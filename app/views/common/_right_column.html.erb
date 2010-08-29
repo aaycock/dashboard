@@ -14,7 +14,7 @@
               <dd><h4>&nbsp;&nbsp;&nbsp;<%= pluralize(@dashboard_count, 'dashboard') %> </h4></dd>
               <dd class="last"><a href="/dashboards/new">+ Add dashboard</a></dd>
               <hr>
-<% if session[:user].role == "admin" %>
+<% if User.find(session[:user_id]).role == "admin" %>
               <dt><img  alt="" src="/img/right_column/edit_page.png"></dt>
               <dd><a href="/admin/my_account">Plan details</a></dd>
               <dd class="last">Want to upgrade your account?</dd>
