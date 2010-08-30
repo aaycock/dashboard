@@ -51,9 +51,9 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-    if !Account.find(session[:account_id]).services.find(@event.service_id)
-        @event=nil
-        return
+    #if !Account.find(session[:account_id]).services.find(@event.service_id)
+     #   @event=nil
+     #   return
     end
 
     respond_to do |format|
