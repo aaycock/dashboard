@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     #if !Account.find(session[:account_id]).services.find(@event.service_id)
      #   @event=nil
      #   return
-    end
+    #end
 
     respond_to do |format|
       if @event.save
