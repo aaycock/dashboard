@@ -18,9 +18,9 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @edit = params[:admin]
-    if Account.find(session[:account_id]).services.find(params[:id])
+    #if Account.find(session[:account_id]).services.find(params[:id])
       @events = Event.find_by_sql ["select * from events where service_id = ? and  date(timestamp) = ? order by timestamp desc", params[:id], params[:date]]
-    end
+    #end
     logger.debug "events: #{@events.length}"
     respond_to do |format|
       format.html # show.html.erb
