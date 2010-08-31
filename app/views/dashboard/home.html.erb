@@ -26,7 +26,7 @@
         <% @dashboards = Dashboard.find_all_by_account_id(session[:account_id]) %>
         <h1>Dashboard: <%= Dashboard.find(session[:dashboard_id]).name %> </h1>
           <% if @dashboards.length >1 %>
-            <%= select "selected_dashboard", session[:dashboard_id], @dashboards.map {|d| [d.name, d.id] }, { :prompt => "Select Dashboard"}, { :onchange => "location = '/home?di=' + this.options[this.selectedIndex].value;" } %>
+            &nbsp;&nbsp;<%= select "selected_dashboard", session[:dashboard_id], @dashboards.map {|d| [d.name, d.id] }, { :prompt => "Select Dashboard"}, { :onchange => "location = '/home?di=' + this.options[this.selectedIndex].value;" } %>
         <% end %>
         <!-- Quick search box -->
         <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
