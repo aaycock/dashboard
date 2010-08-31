@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :service
   validates_presence_of :service_id
+  validates_presence_of :level
 
 
 end

@@ -26,7 +26,7 @@ class DashboardController < ApplicationController
     @services.each do |service|
       @days.each do |day|
 
-        event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
+        event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?) order by events.timestamp desc", service.id, day]
         if event.length > 0
           if day.strftime("%m/%d/%Y") != Time.now.strftime("%m/%d/%Y")
             event[0].level = 1
@@ -65,7 +65,7 @@ class DashboardController < ApplicationController
     @services.each do |service|
       @days.each do |day|
 
-        event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?)", service.id, day]
+        event = Event.find_by_sql ["select * from events where events.service_id = ? and  date(events.timestamp) = date(?) order by events.timestamp desc", service.id, day]
         if event.length > 0
           if day.strftime("%m/%d/%Y") != Time.now.strftime("%m/%d/%Y")
             event[0].level = 1

@@ -43,6 +43,11 @@
       <div class="wrapper">
         <!-- Left column/section -->
         <section class="column width6 first">
+           <% if flash[:notice] -%>
+
+              <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+
+            <% end %>
           <% if @services.length > 0 %>
             <p>
               <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
@@ -55,11 +60,7 @@
           <% if @services.length > 0 %>
             <h3>External URL: <a target="_blank" href="<%= url %>"><%= url %></a></h3>
 
-            <% if flash[:notice] -%>
-
-              <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
-
-            <% end %>
+           
 
 
             <div id="table">

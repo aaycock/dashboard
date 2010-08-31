@@ -64,11 +64,11 @@ class AdminController < ApplicationController
       else
         @user.update_attributes(:password=>params[:password], :password_confirmation => params[:password_confirmation])
         if @user.save
-          flash[:success]="Password Changed"
+          flash[:notice]="Password Changed"
         else
           flash[:error]="Couldn't update password"
         end
-        redirect_to( :action => "my_account")
+        redirect_to( "/home")
       end
     end
   end
