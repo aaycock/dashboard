@@ -4,6 +4,16 @@
 <link rel="shortcut icon" type="image/png" href="/img/favicons/favicon.png"/>
 <link rel="icon" type="image/png" href="/img/favicons/favicon.png"/>
 <link rel="apple-touch-icon" href="/img/favicons/apple.png" />
+<!-- Internet Explorer Fixes -->
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="/stylesheets/ie.css"/>
+<script src="/js/html5.js"></script>
+<![endif]-->
+<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+<!--[if lt IE 8]>
+<script src="/js/IE8.js"></script>
+<![endif]-->
+
 <!-- Main Stylesheet -->
 <!-- <link rel="stylesheet" href="/css/style.css" type="text/css" /> -->
 <%= stylesheet_link_tag "style", :media => "all" %>
@@ -41,7 +51,7 @@ Default colour scheme is blue. Uncomment prefered stylesheet to use it.
 <!-- jQuery popup box -->
 <script type="text/javascript" src="/js/jquery.nyroModal.pack.js"></script>
 <!-- jQuery graph plugins -->
-<!--[if IE]><script type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
+<!--[if IE]><script type="text/javascript" src="/js/flot/excanvas.min.js"></script><![endif]-->
 <script type="text/javascript" src="/js/flot/jquery.flot.min.js"></script>
 <script type="text/javascript" src="/js/flot/jquery.flot.selection.min.js"></script>
 <script type="text/javascript" src="/js/highcharts.js"></script>
