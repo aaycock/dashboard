@@ -1,164 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>StatusDashboard | Signup</title>
+    <head>
+        <title>StatusDashboard | Signup</title>
 
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-    <meta name="robots" content="all" />
-    <meta name="robots" content="index, follow" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="version" content="1.0" />
-    <meta name="copyright" content="" />
-    <link rel="shortcut icon" href="favicon.ico" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <meta name="robots" content="all" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="version" content="1.0" />
+        <meta name="copyright" content="" />
+        <link rel="shortcut icon" href="favicon.ico" />
 
 
-    <!-- Cascading Style Sheets -->
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/form.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/screen.css" />
-    
-    <!--[if IE 6]>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/ie.css" />
-    <![endif]-->    
+        <!-- Cascading Style Sheets -->
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/form.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/screen.css" />
 
-    <!-- JavaScripts -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
-    
-    <!--[if IE 6]>
-    <script src="assets/js/pngfix.js"></script>
-    <![endif]-->    
-</head>
-<body class="subpage">
+        <!--[if IE 6]>
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/ie.css" />
+        <![endif]-->
 
-<!-- container -->
-<div class="container">
+        <!-- JavaScripts -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
 
-    <!-- wrapper -->
-    <div class="wrapper">
-        
-        <!-- header -->
-        <div class="header">
-            
-            <div class="top-nav">
-                
-            <h1>&nbsp;</h1>
-        
-             <ul class="nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pricing.html" class ="selected">Pricing & Signup</a></li>
-                <li><a href="support.html">Support</a></li>
-                <li><a href="https://secure.statusdashboard.com/admin/login">Login</a></li>
-            </ul>
-            
-            
-            </div>
+        <!--[if IE 6]>
+        <script src="assets/js/pngfix.js"></script>
+        <![endif]-->
+
+        <script type="text/javascript">
+            function validate_required(field,alerttxt)
+            {
+                with (field)
+                {
+                    if (value==null||value=="")
+                    {
+                        alert(alerttxt);return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            function validate_email(field,alerttxt)
+            {
+                with (field)
+                {
+                    apos=value.indexOf("@");
+                    dotpos=value.lastIndexOf(".");
+                    if (apos<1||dotpos-apos<2)
+                    {alert(alerttxt);return false;}
+                    else {return true;}
+                }
+            }
+
+            function validate_form(thisform)
+            {
+                with (thisform)
+                {
+                    if (validate_email(account_contact_email,"Not a valid e-mail address")==false)
+                    {account_contact_email.focus();return false;}
+                    
+                    if (validate_required(account_contact_firstname, "First name required.") ==false)
+                    {account_contact_firstname.focus();return false;}
                         
-            <div class="page-title">
-                
-                <h2>Get started in 60 seconds.</h2>
-                                
-            </div>
-                
-        </div>
-        <!-- // header -->
-        
-        <!-- sub-header -->     
-        <div class="sub-header">
-        
-            <!-- content -->
-            <div class="content-top"></div>
-            <div class="content clearfix">
-                
-                
-                <h4>No-risk Signup</h4>
-                <p>You are just 60 seconds away from using your new StatusDashboard.</p>
-                <p><br /></p>
-                
+                    if (validate_required(account_contact_lastname, "Last name required.") ==false)
+                    {account_contact_lastname.focus();return false;}
 
-                    <form id="contactform" action="/accounts" method="post" enctype="multipart/form-data">
-                        
-                        <ul>
+                    if (validate_required(account_name, "Account name required.") ==false)
+                    {account_name.focus();return false;}
+                }
+            }
+        </script>
+        </script>
 
-                            <li>
-                                <b>Company Name &nbsp;&nbsp;</b>
-                                 <input id="account_name" name="account[name]" size="30" type="text" />
-                            </li>
-                            <li>
-                                <b>Your First Name&nbsp;&nbsp;&nbsp;</b>
-                                <input id="account_contact_firstname" name="account[contact_firstname]" size="30" type="text" />
-                            </li>
-                              <li>
-                                <b>Your Last Name&nbsp;&nbsp;&nbsp;</b>
-                                 <input id="account_contact_lastname" name="account[contact_lastname]" size="30" type="text" />
-                            </li>
-                            <li>
-                                <b>Your Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-                                <input id="account_contact_email" name="account[contact_email]" size="30" type="text" /> 
-                            </li>
-                            <li>
-                                <b>Plan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-                                <select id="account_plan" name="account[plan]" >
-                                    <option  value="" >Please select</option>
-                                    <option  value="sd-basic">Basic $10/mo</option>
-                                    <option  value="sd-plus">Plus $15/mo</option>
-                                    <option  value="sd-premium">Premium $20/mo</option>
-                                </select>
+    </head>
+    <body class="subpage">
 
+        <!-- container -->
+        <div class="container">
 
-                            </li>
-                            <p>&nbsp;</p>
-                            <li>
-                                <input type="submit" class="submit" value="Submit" />
-                            </li>
+            <!-- wrapper -->
+            <div class="wrapper">
+
+                <!-- header -->
+                <div class="header">
+
+                    <div class="top-nav">
+
+                        <h1>&nbsp;</h1>
+
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="pricing.html" class ="selected">Pricing & Signup</a></li>
+                            <li><a href="support.html">Support</a></li>
+                            <li><a href="https://secure.statusdashboard.com/admin/login">Login</a></li>
                         </ul>
-                    </form>
-                                
+
+
+                    </div>
+
+                    <div class="page-title">
+
+                        <h2>Get started in 60 seconds.</h2>
+
+                    </div>
+
+                </div>
+                <!-- // header -->
+
+                <!-- sub-header -->
+                <div class="sub-header">
+
+                    <!-- content -->
+                    <div class="content-top"></div>
+                    <div class="content clearfix">
+
+
+                        <h4>No-risk Signup</h4>
+                        <p>You are just 60 seconds away from using your new StatusDashboard.</p>
+                        <p><br /></p>
+
+
+                        <form id="contactform" action="/accounts" method="post" enctype="multipart/form-data" onsubmit="return validate_form(this);">
+
+                            <ul>
+
+                                <li>
+                                    <b>Company Name &nbsp;&nbsp;</b>
+                                    <input id="account_name" name="account[name]" size="30" type="text" />
+                                </li>
+                                <li>
+                                    <b>Your First Name&nbsp;&nbsp;&nbsp;</b>
+                                    <input id="account_contact_firstname" name="account[contact_firstname]" size="30" type="text" />
+                                </li>
+                                <li>
+                                    <b>Your Last Name&nbsp;&nbsp;&nbsp;</b>
+                                    <input id="account_contact_lastname" name="account[contact_lastname]" size="30" type="text" />
+                                </li>
+                                <li>
+                                    <b>Your Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                    <input id="account_contact_email" name="account[contact_email]" size="30" type="text" />
+                                </li>
+                                <li>
+                                    <b>Plan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                    <select id="account_plan" name="account[plan]" >
+                                        <option  value="sd-basic">Basic $10/mo</option>
+                                        <option  value="sd-plus">Plus $15/mo</option>
+                                        <option  value="sd-premium">Premium $20/mo</option>
+                                    </select>
+
+
+                                </li>
+                                <p>&nbsp;</p>
+                                <li>
+                                    <input type="submit" class="submit" value="Submit"   />
+                                </li>
+                            </ul>
+                        </form>
+
+                    </div>
+                    <div class="content-btm"></div>
+                    <!-- // content -->
+
+
+                </div>
+                <!-- // sub-header -->
+
+                <!-- footer -->
+                <div class="footer">
+
+                    <div class="copy">
+                        <p>Copyright &copy; 2010 ClearSignal Software. All rights reserved. </p>
+                    </div>
+                    <!--<div class="twitter">
+                        <a href="#"><img src="images/bg_twitter.png" alt="Follow us on Twitter" /></a>
+                    </div> -->
+
+                </div>
+                <!-- // footer -->
+
             </div>
-            <div class="content-btm"></div>
-            <!-- // content -->
-
-        
-        </div>
-        <!-- // sub-header -->
-                        
-        <!-- footer -->
-        <div class="footer">            
-            
-            <div class="copy">
-                <p>Copyright &copy; 2010 ClearSignal Software. All rights reserved. </p>
-            </div>
-            <!--<div class="twitter">
-                <a href="#"><img src="images/bg_twitter.png" alt="Follow us on Twitter" /></a>
-            </div> -->
+            <!-- // wrapper -->
 
         </div>
-        <!-- // footer -->
-    
-    </div>
-    <!-- // wrapper -->
-    
-</div>
-<!-- // container -->
-<script src="https://static.getclicky.com/js" type="text/javascript"></script>
-<script type="text/javascript">clicky.init(245493);</script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/245493ns.gif" /></p></noscript>
-<script type="text/javascript">
+        <!-- // container -->
+        <script src="https://static.getclicky.com/js" type="text/javascript"></script>
+        <script type="text/javascript">clicky.init(245493);</script>
+        <noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/245493ns.gif" /></p></noscript>
+        <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-18154529-1']);
-  _gaq.push(['_trackPageview']);
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-18154529-1']);
+            _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
 
-</script>
-</body>
+        </script>
+    </body>
 </html>
