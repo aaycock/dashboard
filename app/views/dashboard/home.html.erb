@@ -16,26 +16,12 @@
 
       });
     </script>
-
-
   </head>
+
   <body>
+   
 
-    <%= render :partial => "/common/header" %>
-
-    <!-- Page title -->
-    <div id="pagetitle">
-      <div class="wrapper">
-        <% @dashboards = Dashboard.find_all_by_account_id(session[:account_id]) %>
-        <h1>Dashboard: <%= Dashboard.find(session[:dashboard_id]).name %>
-          <% if @dashboards.length >1 %>
-            <%= select "selected_dashboard", session[:dashboard_id], @dashboards.map {|d| [d.name, d.id] }, { :prompt => "Select Dashboard"}, { :onchange => "location = '/home?di=' + this.options[this.selectedIndex].value;" } %></h1>
-        <% end %>
-        <!-- Quick search box -->
-        <!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
-      </div>
-    </div>
-    <!-- End of Page title -->
+   
 
     <!-- Page content -->
     <div id="page">
@@ -43,11 +29,11 @@
       <div class="wrapper">
         <!-- Left column/section -->
         <section class="column width6 first">
-           <% if flash[:notice] -%>
+          <% if flash[:notice] -%>
 
-              <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
+            <p><div class="box box-success closeable"><%= flash[:notice] %></div></p>
 
-            <% end %>
+          <% end %>
           <% if @services.length > 0 %>
             <p>
               <button class="btn" onClick="location.href='/events/new'"><span class="icon icon-add">&nbsp;</span>Add New Event</button>
@@ -60,7 +46,7 @@
           <% if @services.length > 0 %>
             <h3>External URL: <a target="_blank" href="<%= url %>"><%= url %></a></h3>
 
-           
+
 
 
             <div id="table">
