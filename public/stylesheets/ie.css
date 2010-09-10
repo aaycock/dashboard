@@ -38,7 +38,8 @@ override the style in this file.
 }
 
 header#top {
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#323232', endColorstr='#272622');
+	background-color: #282828;
+    width:100%;
 }
 #pagetitle {
 	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6BA3E2', endColorstr='#5092DC');*/
