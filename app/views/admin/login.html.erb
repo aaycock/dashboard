@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>StatusDashboard Login</title>
-    <%= render :partial => "/common/login_includes" %>
+    <%= render :partial => "/common/includes" %>
     
   </head>
   <body>
@@ -24,7 +24,7 @@
         <h3>Login</h3>
 
 
-        
+
         <% if flash[:warning] -%>
           <div class="box box-error"><%= flash[:warning] %></div>
           <% end %>
@@ -59,7 +59,7 @@
           <% end %>
 
           <% form_tag "/admin/forgot_password", :id => "emailform", :style => "display:none" do %>
-          
+
             <div class="box">
               <p id="emailinput">
                 <label for="email">Email:</label><br/>
@@ -69,7 +69,7 @@
                 <%= submit_tag "Send", :class => "btn" %>
               </p>
             </div>
-          
+
           <% end %>
 
         </section>
@@ -83,6 +83,6 @@
    <%= render :partial => "/common/login_footer" %>
 
     <!-- User interface javascript load -->
-   
+    
   </body>
   </html>
