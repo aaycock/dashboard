@@ -4,36 +4,7 @@
     <meta charset="utf-8" />
     <title>StatusDashboard Login</title>
     <%= render :partial => "/common/includes" %>
-    <script type="text/javascript">
-
-      $(document).ready(function(){
-
-        /* setup navigation, content boxes, etc... */
-        Administry.setup();
-
-        // validate signup form on keyup and submit
-        var validator = $("#loginform").validate({
-          rules: {
-            username: "required",
-            password: "required"
-          },
-          messages: {
-            username: "Enter your username",
-            password: "Provide your password"
-          },
-          // the errorPlacement has to take the layout into account
-          errorPlacement: function(error, element) {
-            error.insertAfter(element.parent().find('label:first'));
-          },
-          // set new class to error-labels to indicate valid fields
-          success: function(label) {
-            // set &nbsp; as text for IE
-            label.html("&nbsp;").addClass("ok");
-          }
-        });
-
-      });
-    </script>
+    
   </head>
   <body>
    <%= render :partial => "/common/login_header" %>
