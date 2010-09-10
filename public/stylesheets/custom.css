@@ -13,3 +13,9 @@ this file, and modify it to your liking.
     background-color:#FFFFFF;
      text-decoration:none;
 }
+
+
+header#top {
+    background-color: #282828;
+    width:100%;
+}

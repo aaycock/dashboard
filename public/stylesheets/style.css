@@ -741,18 +741,7 @@ fieldset small {
 header#top {
     background-color: #282828;
     width:100%;
-    background:-webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0.2, rgb(39,38,34)),
-        color-stop(0.8, rgb(50,50,50))
-        );
-    background: -moz-linear-gradient(
-        center bottom,
-        rgb(39,38,34) 20%,
-        rgb(50,50,50) 80%
-        );
+    
 }
 
 header#top aside {
@@ -964,6 +953,7 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
 ---------------------------------------------------------------------*/
 
 #title {
+    background-color: #282828;
     color:#FFF;
     font:bold 2.4em/26px 'Trebuchet MS',Trebuchet,Arial,sans-serif;
     letter-spacing:-0.02em;
