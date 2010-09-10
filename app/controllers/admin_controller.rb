@@ -24,6 +24,7 @@ class AdminController < ApplicationController
         session[:account_id] = user.account_id
         session[:user_first_name] = user.first_name
         session[:user_last_name] = user.last_name
+        session[:dashboard_id] = nil
         session[:dashboard_id] = Dashboard.find_by_account_id(user.account_id).id
         uri = session[:original_uri]
         session[:original_uri] = nil
