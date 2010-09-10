@@ -964,6 +964,7 @@ a:focus>.sf-sub-indicator,a:hover>.sf-sub-indicator,a:active>.sf-sub-indicator,l
 ---------------------------------------------------------------------*/
 
 #title {
+    background: transparent;
     color:#FFF;
     font:bold 2.4em/26px 'Trebuchet MS',Trebuchet,Arial,sans-serif;
     letter-spacing:-0.02em;
