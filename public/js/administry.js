@@ -42,9 +42,9 @@ Administry.scrollToTop = function (e) {
         $("html, body").animate({
             scrollTop: 0
         }, "slow")
-    })
+    })*/
 }
-*/
+
 
 // setup() - Administry init and setup
 Administry.setup = function () {
@@ -59,7 +59,9 @@ Administry.setup = function () {
 		maxWidth:    27,   // maximum width of sub-menus in em units 
 		extraWidth:  1     // extra width can ensure lines don't sometimes turn over 
 						   // due to slight rounding differences and font-family 
-	}).superfish(); 
+	}).superfish();
+        });
+        }
 	/*
     // build an animated footer
     $('#animated').each(function () {
