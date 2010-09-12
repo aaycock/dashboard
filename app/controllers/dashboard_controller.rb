@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
     #  @dashboard = dashboards[0] Add back when we handle multiple dashboards
     @services = Service.find_all_by_dashboard_id(session[:dashboard_id])
 
-    time = Time.now-@offset.days
+    time = Time.now+4.hours-@offset.days
     @days = Array[ time, time-1.day, time-2.days, time-3.days, time-4.days ]
 
     @history_hash = Hash.new
