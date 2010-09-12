@@ -39,7 +39,7 @@
                 <tr>
                   <th width="25%" >Service</th>
                   <% @days.each do |day| %>
-                    <% if day.strftime('%m/%d/%Y') == Time.now+4.hours.strftime('%m/%d/%Y') %>
+                    <% if day.strftime('%m/%d/%Y') == (Time.now+4.hours).strftime('%m/%d/%Y') %>
                       <th align="center" width="15%">Today</th>
                     <% else %>
                       <th align="center" width="15%"><%= day.strftime('%m/%d/%Y') %></th>
