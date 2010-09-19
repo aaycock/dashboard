@@ -4,6 +4,13 @@ class Account < ActiveRecord::Base
   has_many :users
   has_many :dashboards
 
+  PRODUCTS = [
+    ["Free", "sd-free"],
+    ["Basic", "sd-basic"],
+    ["Plus", "sd-plus"],
+    ["Premium", "sd-premium"]
+  ]
+
   # Create a new customer
   def create_chargify_customer
     customer = Chargify::Customer.create(

@@ -70,7 +70,7 @@
   
   <p>
     <%= f.label :plan %><br />
-    <%= f.select :plan, @products.map { |p| [p.name, p.handle]}, :prompt => "Select a plan"  %>
+    <%= f.select :plan, Account::PRODUCTS %>
   </p>
 
   <p>
