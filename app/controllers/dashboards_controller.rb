@@ -75,7 +75,7 @@ class DashboardsController < ApplicationController
   # DELETE /dashboards/1
   # DELETE /dashboards/1.xml
   def destroy
-    if params[:id] == session[:dashboard_id]
+    if params[:id].to_i == session[:dashboard_id].to_i
       flash[:warning] = "Unable to remove active dashboard (try switching)"
       redirect_to("/dashboards")
       return

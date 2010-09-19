@@ -37,12 +37,12 @@
             <table class="stylized full" cellpadding="0" cellspacing="0" border="0">
               <thead>
                 <tr>
-                  <th>Service</th>
+                  <th width="25%" >Service</th>
                   <% @days.each do |day| %>
-                    <% if day.strftime('%m/%d/%Y') == Time.now.strftime('%m/%d/%Y') %>
-                      <th>Today</th>
+                    <% if day.strftime('%m/%d/%Y') == (Time.now+4.hours).strftime('%m/%d/%Y') %>
+                      <th align="center" width="15%">Today</th>
                     <% else %>
-                      <th><%= day.strftime('%m/%d/%Y') %></th>
+                      <th align="center" width="15%"><%= day.strftime('%m/%d/%Y') %></th>
                     <% end %>
                   <% end %>
                 </tr>
@@ -56,9 +56,9 @@
                     <% @days.each do |day| %>
                       <% e = @history_hash[service.id.to_s + "-" + day.strftime('%m/%d/%Y')] %>
                       <%  if e %>
-                        <td align="center" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
+                        <td align="center" width="15%" ><a style="text-decoration:none" class="img" rel="facebox" href="/events/show/<%= e[0] %>?date=<%=h e[2] %>"><img src="/img/table/<%= e[1] %>.png" alt="" /></a></td>
                       <% else %>
-                        <td align="center" ><img src="/img/table/tick.png" alt="" /></td>
+                        <td align="center" width="15%" ><img src="/img/table/tick.png" alt="" /></td>
                       <% end %>
                     <% end %>
 
